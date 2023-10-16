@@ -1,19 +1,16 @@
-import { UserInterface } from "./UserInterface.js";
+import { generateUniqueId } from "./helpers/helper.mjs";
 
 export class ATM {
-    constructor(location) {
-        this.id = 9;
-        this.balance = 0;
+    constructor(balance, location) {
+        this.id = + generateUniqueId();
+        this.balance = balance;
         this.location = location;
-        this.currentAccount = null;
     }
 
-    run() {
-    }
 
     setAccount(account) {
         this.currentAccount = account;
-     }
+    }
 
     displayMenu() { }
 
