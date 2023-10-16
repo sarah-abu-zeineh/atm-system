@@ -10,7 +10,7 @@ export class Bank {
     constructor(bankName) {
         this.id = + generateUniqueId();
         this.accounts = AccountsArray.map(account => {
-            return this.createAccount(account)
+            return this.createAccount(account);
         });
         this.atms = ATMs.map(atm => {
             return this.addATM(atm);
@@ -19,15 +19,16 @@ export class Bank {
     }
 
     createAccount(account) {
-        return new Account(account)
+        return new Account(account);
     }
 
     getAccount(user_name, password) {
-        return this.accounts.find(account => account.userName === user_name && account.password === password)
+        return this.accounts.find(account => account.userName === user_name && account.password === password);
     }
+    
     addATM(atm) {
-        return new ATM(atm.balance, atm.location)
+        return new ATM(atm.balance, atm.location);
     }
 
-    deleteAccount() { }
+    deleteAccount() {}
 }
