@@ -1,4 +1,4 @@
-import {generateUniqueId} from "./helpers/helper.mjs";
+import {generateUniqueId} from "./helpers/helper.js";
 
 export class Account {
     constructor(account) {
@@ -25,6 +25,10 @@ export class Account {
             return;
         }
         console.log(`Insufficient Balance`);
+    }
+
+    displayBalance() {
+        console.log(`${this.firstName}'s balance: ${this.currencyType.icon}${this.balance}`);
     }
 
     cashDeposit() {}

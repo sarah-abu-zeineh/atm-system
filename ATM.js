@@ -1,4 +1,4 @@
-import {generateUniqueId} from "./helpers/helper.mjs";
+import {generateUniqueId} from "./helpers/helper.js";
 
 export class ATM {
     constructor(balance, location) {
