@@ -1,4 +1,4 @@
-class Bank {
+export class Bank {
     constructor(name) {
         this.id = id;
         this.accounts = [];
