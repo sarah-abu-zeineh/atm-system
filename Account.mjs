@@ -9,12 +9,23 @@ export class Account {
         this.email = account.email;
         this.firstName = account.firstName;
         this.lastName = account.lastName;
-        this.balance = 0;
+        this.balance = account.balance;
         this.lastInteract = account.lastInteract;
         this.currencyType = account.currencyType;
     }
 
-    cashWithDraw() {}
+    cashWithDraw(amountToWithDraw) {
+        if (amountToWithDraw < this.balance) {
+            this.balance = this.balance - amountToWithDraw;
+
+            console.log(`Your new Balance is ${
+                this.balance
+            }`);
+            
+            return;
+        }
+        console.log(`Insufficient Balance`);
+    }
 
     cashDeposit() {}
 
