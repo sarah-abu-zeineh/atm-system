@@ -26,7 +26,14 @@ export class Account {
         console.log(`Insufficient Balance`);
     }
 
-    cashDeposit() { }
+    cashDeposit(fund) {
+        if (fund > 0) {
+            this.balance += fund;
+        }
+        else {
+            console.log("Please enter a positve number!")
+        }
+    }
 
     changePassword() { }
 
