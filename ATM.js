@@ -1,17 +1,24 @@
+import { UserInterface } from "./UserInterface.js";
+
 export class ATM {
     constructor(location) {
-        this.id = id;
+        this.id = 9;
         this.balance = 0;
         this.location = location;
     }
 
-    displayMenu() {}
+    run() {
+        const userInerface = new UserInterface();
+        userInerface.login();
+    }
+    
+    displayMenu() { }
 
-    logIn() {}
+    logIn() { }
 
-    logOut() {}
+    logOut() { }
 
-    convertCurrency() {}
+    convertCurrency() { }
 
-    exit() {}
+    exit() { }
 }
