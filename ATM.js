@@ -1,4 +1,4 @@
-class ATM {
+export class ATM {
     constructor(location) {
         this.id = id;
         this.balance = 0;
