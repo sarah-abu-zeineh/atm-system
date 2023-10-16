@@ -5,13 +5,16 @@ export class ATM {
         this.id = 9;
         this.balance = 0;
         this.location = location;
+        this.currentAccount = null;
     }
 
     run() {
-        const userInerface = new UserInterface();
-        userInerface.login();
     }
-    
+
+    setAccount(account) {
+        this.currentAccount = account;
+     }
+
     displayMenu() { }
 
     logIn() { }
