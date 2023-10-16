@@ -1,14 +1,17 @@
 export class Bank {
-    constructor(name) {
-        this.id = id;
+    constructor(bankName) {
+        this.id = 5;
         this.accounts = [];
         this.atms = [];
         this.bankName = bankName;
     }
 
-    createAccount() {}
+    createAccount() { }
 
-    getAccounts() {}
-    
-    deleteAccount() {}
+    getAccount(user_name, password) {
+        return this.accounts.find(account => account.user_name === user_name && account.password === password)
+    }
+
+
+    deleteAccount() { }
 }
