@@ -166,8 +166,8 @@ export const AccountsArray = [
         "gender": "Female",
         "lastInteract": "7/5/2023",
         "currencyType": {
-            "code": "Euro",
-            "icon": "€"
+            "code": "ILS",
+            "icon": "₪"
         },
         "balance": 49000
     }, {
@@ -222,8 +222,8 @@ export const AccountsArray = [
         "gender": "Female",
         "lastInteract": "9/12/2023",
         "currencyType": {
-            "code": "Euro",
-            "icon": "€"
+            "code": "ILS",
+            "icon": "₪"
         },
         "balance": 42000
     },
