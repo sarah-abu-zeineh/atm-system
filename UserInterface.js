@@ -1,4 +1,4 @@
-import { accounts } from "./utils/AccountsArray.js";
+import { Bank } from "./Bank.js";
 import * as readline from "readline";
 
 
@@ -9,16 +9,18 @@ const rl = readline.createInterface({
 
 export class UserInterface {
     constructor() {
+        this.myBank = new Bank("Arab Bank");
     }
     login() {
         rl.question('Enter your username: ', (username) => {
             rl.question('Enter your password: ', (password) => {
-                const isValidCredentials = accounts.some(account => {
+                const isValidCredentials = this.myBank.accounts.some(account => {
                     return account.user_name === username && account.password === password;
                 });
-
                 if (isValidCredentials) {
                     console.log('Login successful.');
+                    const currentAccount = this.myBank.getAccount(username, password);
+                    console.log(currentAccount);
                 } else {
                     console.log('Login failed.');
                 }
@@ -28,4 +30,3 @@ export class UserInterface {
     }
     display() { }
 }
-
