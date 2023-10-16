@@ -15,12 +15,11 @@ export class UserInterface {
         rl.question('Enter your username: ', (username) => {
             rl.question('Enter your password: ', (password) => {
                 const isValidCredentials = this.myBank.accounts.some(account => {
-                    return account.user_name === username && account.password === password;
+                    return account.userName === username && account.password === password;
                 });
                 if (isValidCredentials) {
                     console.log('Login successful.');
                     const currentAccount = this.myBank.getAccount(username, password);
-                    console.log(currentAccount);
                 } else {
                     console.log('Login failed.');
                 }
