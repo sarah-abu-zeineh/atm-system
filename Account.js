@@ -1,4 +1,4 @@
-import {generateUniqueId} from "./helpers/helper.mjs";
+import { generateUniqueId } from "./helpers/helper.js";
 
 export class Account {
     constructor(account) {
@@ -18,19 +18,18 @@ export class Account {
         if (amountToWithDraw < this.balance) {
             this.balance = this.balance - amountToWithDraw;
 
-            console.log(`Your new Balance is ${
-                this.balance
-            }`);
-            
+            console.log(`Your new Balance is ${this.balance
+                }`);
+
             return;
         }
         console.log(`Insufficient Balance`);
     }
 
-    cashDeposit() {}
+    cashDeposit() { }
 
-    changePassword() {}
+    changePassword() { }
 
-    transferFund() {}
+    transferFund() { }
 
 }

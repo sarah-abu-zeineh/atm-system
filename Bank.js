@@ -1,10 +1,10 @@
-import {generateUniqueId} from "./helpers/helper.mjs";
+import { generateUniqueId } from "./helpers/helper.js";
 
-import {Account} from "./Account.mjs";
-import {ATM} from "./ATM.mjs"
+import { Account } from "./Account.js";
+import { ATM } from "./ATM.js"
 
-import {AccountsArray} from "./utils/AccountsArray.mjs";
-import { ATMs } from "./utils/ATMsArrya.mjs";
+import { AccountsArray } from "./utils/AccountsArray.js";
+import { ATMs } from "./utils/ATMsArrya.js";
 
 export class Bank {
     constructor(bankName) {
@@ -22,11 +22,12 @@ export class Bank {
         return new Account(account)
     }
 
-    getAccount() {}
-
-    addATM(atm){
+    getAccount(user_name, password) {
+        return this.accounts.find(account => account.userName === user_name && account.password === password)
+    }
+    addATM(atm) {
         return new ATM(atm.balance, atm.location)
     }
 
-    deleteAccount() {}
+    deleteAccount() { }
 }
