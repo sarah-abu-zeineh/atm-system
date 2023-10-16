@@ -1,12 +1,14 @@
 class Account {
-    constructor(userName, firstName, lastName, password, balance, currencyType) {
+    constructor(userName, gender, firstName, lastName, password, lastInteract, balance, currencyType) {
         this.id = id;
         this.userName = userName;
         this.password = password;
+        this.gender = gender;
+        this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
         this.balance = balance;
-        this.lastInteract = {};
+        this.lastInteract = lastInteract;
         this.currencyType = currencyType;
     }
 
