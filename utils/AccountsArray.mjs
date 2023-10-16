@@ -8,7 +8,10 @@ export const AccountsArray = [
         "email": "cyurukhin0@walmart.com",
         "gender": "Female",
         "lastInteract": "3/20/2023",
-        "currencyType": "Yuan Renminbi",
+        "currencyType": {
+            "code": "Dollar",
+            "icon": "$"
+        },
         "balance": 369809
     },
     {
@@ -20,7 +23,10 @@ export const AccountsArray = [
         "email": "dstudholme1@ifeng.com",
         "gender": "Female",
         "lastInteract": "9/13/2023",
-        "currencyType": "Yuan Renminbi",
+        "currencyType": {
+            "code": "Dollar",
+            "icon": "$"
+        },
         "balance": 838401
     },
     {
@@ -32,7 +38,10 @@ export const AccountsArray = [
         "email": "srabbitt2@yelp.com",
         "gender": "Female",
         "lastInteract": "1/27/2023",
-        "currencyType": "Euro",
+        "currencyType": {
+            "code": "Dinar",
+            "icon": "د.إ"
+        },
         "balance": 722794
     },
     {
@@ -44,644 +53,178 @@ export const AccountsArray = [
         "email": "wharford3@live.com",
         "gender": "Polygender",
         "lastInteract": "4/3/2023",
-        "currencyType": "Krona",
+        "currencyType": {
+            "code": "ILS",
+            "icon": "₪"
+        },
         "balance": 934503
     }, {
         "id": 5,
-        "userName": "mdorian4",
-        "password": "cE6=2u=oO",
-        "firstName": "Marjorie",
-        "lastName": "Dorian",
-        "email": "mdorian4@mlb.com",
-        "gender": "Female",
-        "lastInteract": "2/7/2023",
-        "currencyType": "Rupiah",
-        "balance": 679995
+        "userName": "amccoggle4",
+        "password": "gH9*yR&M#m$7",
+        "firstName": "Audra",
+        "lastName": "McCoggle",
+        "email": "amccoggle4@gmail.com",
+        "gender": "Non-binary",
+        "lastInteract": "7/15/2023",
+        "currencyType": {
+            "code": "Dinar",
+            "icon": "د.إ"
+        },
+        "balance": 621235
     }, {
         "id": 6,
-        "userName": "aveljes5",
-        "password": "wM4@cnA)(_Oe#)",
-        "firstName": "Ahmed",
-        "lastName": "Veljes",
-        "email": "aveljes5@ihg.com",
+        "userName": "jthumnel5",
+        "password": "sB0B9*^tLl",
+        "firstName": "Josy",
+        "lastName": "Thumnel",
+        "email": "jthumnel5@yahoo.com",
         "gender": "Male",
-        "lastInteract": "5/3/2023",
-        "currencyType": "Peso",
-        "balance": 440016
+        "lastInteract": "2/10/2023",
+        "currencyType": {
+            "code": "ILS",
+            "icon": "₪"
+        },
+        "balance": 347865
     }, {
         "id": 7,
-        "userName": "worr6",
-        "password": "fQ3?'hG9k$}v=kv",
-        "firstName": "Wallace",
-        "lastName": "Orr",
-        "email": "worr6@diigo.com",
-        "gender": "Male",
-        "lastInteract": "8/20/2023",
-        "currencyType": "Real",
-        "balance": 519499
+        "userName": "cgronou8",
+        "password": "#(XqIb02YjY8",
+        "firstName": "Clarette",
+        "lastName": "Gronou",
+        "email": "cgronou8@twitter.com",
+        "gender": "Female",
+        "lastInteract": "11/1/2023",
+        "currencyType": {
+            "code": "Dollar",
+            "icon": "$"
+        },
+        "balance": 198476
     }, {
         "id": 8,
-        "userName": "hdelgaty7",
-        "password": "eE7@+(0~i_",
-        "firstName": "Hillary",
-        "lastName": "Delgaty",
-        "email": "hdelgaty7@xinhuanet.com",
-        "gender": "Male",
-        "lastInteract": "3/2/2023",
-        "currencyType": "Euro",
-        "balance": 208105
+        "userName": "kmcclocklan7",
+        "password": "p@1&4Lh#D$7",
+        "firstName": "Katharina",
+        "lastName": "McClocklan",
+        "email": "kmcclocklan7@gmail.com",
+        "gender": "Female",
+        "lastInteract": "6/28/2023",
+        "currencyType": {
+            "code": "Dollar",
+            "icon": "$"
+        },
+        "balance": 123450
     }, {
         "id": 9,
-        "userName": "abaskeyfied8",
-        "password": "gF3_uJlVN=",
-        "firstName": "Aggie",
-        "lastName": "Baskeyfied",
-        "email": "abaskeyfied8@google.ru",
-        "gender": "Polygender",
-        "lastInteract": "10/29/2022",
-        "currencyType": "Sol",
-        "balance": 46535
+        "userName": "smatthews8",
+        "password": "M$E#9d7&kf^",
+        "firstName": "Salli",
+        "lastName": "Matthews",
+        "email": "smatthews8@yahoo.com",
+        "gender": "Non-binary",
+        "lastInteract": "4/14/2023",
+        "currencyType": {
+            "code": "Dinar",
+            "icon": "د.إ"
+        },
+        "balance": 987654
     }, {
         "id": 10,
-        "userName": "memor9",
-        "password": "bG0'}3VrpZnYG>?",
-        "firstName": "Marika",
-        "lastName": "Emor",
-        "email": "memor9@nationalgeographic.com",
-        "gender": "Female",
-        "lastInteract": "9/3/2023",
-        "currencyType": "Rupiah",
-        "balance": 348980
+        "userName": "lgrant9",
+        "password": "xK5^r#YnA2$",
+        "firstName": "Leonie",
+        "lastName": "Grant",
+        "email": "lgrant9@twitter.com",
+        "gender": "Male",
+        "lastInteract": "10/25/2023",
+        "currencyType": {
+            "code": "Dollar",
+            "icon": "$"
+        },
+        "balance": 567890
     }, {
         "id": 11,
-        "userName": "pfowkesa",
-        "password": "kI4_RB9RBrkZ",
-        "firstName": "Perren",
-        "lastName": "Fowkes",
-        "email": "pfowkesa@buzzfeed.com",
+        "userName": "jwilliams10",
+        "password": "P@#o7y8xwCfT",
+        "firstName": "Jackie",
+        "lastName": "Williams",
+        "email": "jwilliams10@example.com",
         "gender": "Male",
-        "lastInteract": "11/4/2022",
-        "currencyType": "Rupiah",
-        "balance": 119037
+        "lastInteract": "9/19/2023",
+        "currencyType": {
+            "code": "Dinar",
+            "icon": "د.إ"
+        },
+        "balance": 32000
     }, {
         "id": 12,
-        "userName": "cbignellb",
-        "password": "lP9/(+)JDn?`",
-        "firstName": "Chrystel",
-        "lastName": "Bignell",
-        "email": "cbignellb@phoca.cz",
+        "userName": "lmartinez11",
+        "password": "S7n#b^XkT@oY",
+        "firstName": "Lorenzo",
+        "lastName": "Martinez",
+        "email": "lmartinez11@example.com",
         "gender": "Female",
-        "lastInteract": "11/25/2022",
-        "currencyType": "Yuan Renminbi",
-        "balance": 132317
+        "lastInteract": "7/5/2023",
+        "currencyType": {
+            "code": "Euro",
+            "icon": "€"
+        },
+        "balance": 49000
     }, {
         "id": 13,
-        "userName": "rcastellaccioc",
-        "password": "aA6./2Cj9GI",
-        "firstName": "Ronnie",
-        "lastName": "Castellaccio",
-        "email": "rcastellaccioc@cargocollective.com",
-        "gender": "Bigender",
-        "lastInteract": "9/9/2023",
-        "currencyType": "Ruble",
-        "balance": 723475
+        "userName": "cpatel12",
+        "password": "Gp#A4L2@KfVq",
+        "firstName": "Chloe",
+        "lastName": "Patel",
+        "email": "cpatel12@example.com",
+        "gender": "Non-binary",
+        "lastInteract": "10/2/2023",
+        "currencyType": {
+            "code": "Dollar",
+            "icon": "$"
+        },
+        "balance": 64000
     }, {
         "id": 14,
-        "userName": "egreenhilld",
-        "password": "kI9.hc,Nd",
-        "firstName": "Emily",
-        "lastName": "Greenhill",
-        "email": "egreenhilld@umn.edu",
+        "userName": "rsmith13",
+        "password": "K&Y3ZtP!A6$",
+        "firstName": "Rebecca",
+        "lastName": "Smith",
+        "email": "rsmith13@example.com",
         "gender": "Female",
-        "lastInteract": "1/8/2023",
-        "currencyType": "Real",
-        "balance": 737434
+        "lastInteract": "11/10/2023",
+        "currencyType": {
+            "code": "Dinar",
+            "icon": "د.إ"
+        },
+        "balance": 27000
     }, {
         "id": 15,
-        "userName": "achatere",
-        "password": "fU0\"5d3>t",
-        "firstName": "Ansell",
-        "lastName": "Chater",
-        "email": "achatere@live.com",
+        "userName": "jmiller14",
+        "password": "M9xVqB!4^S@y",
+        "firstName": "John",
+        "lastName": "Miller",
+        "email": "jmiller14@example.com",
         "gender": "Male",
-        "lastInteract": "7/23/2023",
-        "currencyType": "Zloty",
-        "balance": 548497
+        "lastInteract": "8/28/2023",
+        "currencyType": {
+            "code": "Dollar",
+            "icon": "$"
+        },
+        "balance": 38000
     }, {
         "id": 16,
-        "userName": "xkinigf",
-        "password": "pE7?,_*fOx",
-        "firstName": "Xerxes",
-        "lastName": "Kinig",
-        "email": "xkinigf@engadget.com",
-        "gender": "Male",
-        "lastInteract": "9/3/2023",
-        "currencyType": "Sol",
-        "balance": 515112
-    }, {
-        "id": 17,
-        "userName": "lroccag",
-        "password": "lG6'74E9zn.ACYl",
-        "firstName": "Letta",
-        "lastName": "Rocca",
-        "email": "lroccag@indiegogo.com",
+        "userName": "akim15",
+        "password": "N2&G@!Q6H#oZ",
+        "firstName": "Alice",
+        "lastName": "Kim",
+        "email": "akim15@example.com",
         "gender": "Female",
-        "lastInteract": "1/5/2023",
-        "currencyType": "Yuan Renminbi",
-        "balance": 546168
-    }, {
-        "id": 18,
-        "userName": "lcockshooth",
-        "password": "xO0')rldP",
-        "firstName": "Leigh",
-        "lastName": "Cockshoot",
-        "email": "lcockshooth@weather.com",
-        "gender": "Male",
-        "lastInteract": "4/15/2023",
-        "currencyType": "Euro",
-        "balance": 951417
-    }, {
-        "id": 19,
-        "userName": "bsmalcombei",
-        "password": "qT2+}DK  {% ",
-        "firstName": "Bella",
-        "lastName": "Smalcombe",
-        "email": "bsmalcombei@flavors.me",
-        "gender": "Female",
-        "lastInteract": "7/28/2023",
-        "currencyType": "Baht",
-        "balance": 485891
-    }, {
-        "id": 20,
-        "userName": "mnajeraj",
-        "password": "zT9>wg)p$z,",
-        "firstName": "Mathian",
-        "lastName": "Najera",
-        "email": "mnajeraj@ucoz.ru",
-        "gender": "Male",
-        "lastInteract": "11/18/2022",
-        "currencyType": "Yuan Renminbi",
-        "balance": 102537
-    }, {
-        "id": 21,
-        "userName": "cninehamk",
-        "password": "bA0*Kts0|VI",
-        "firstName": "Cassey",
-        "lastName": "Nineham",
-        "email": "cninehamk@unblog.fr",
-        "gender": "Female",
-        "lastInteract": "5/30/2023",
-        "currencyType": "Rupiah",
-        "balance": 83332
-    }, {
-        "id": 22,
-        "userName": "wtrebilcockl",
-        "password": "pN9(_n~a/,UMV!\\",
-        "firstName": "Woody",
-        "lastName": "Trebilcock",
-        "email": "wtrebilcockl@bing.com",
-        "gender": "Male",
-        "lastInteract": "8/10/2023",
-        "currencyType": "Euro",
-        "balance": 722860
-    }, {
-        "id": 23,
-        "userName": "wfruchterm",
-        "password": "jX6*\"T$Tk)a",
-        "firstName": "Walt",
-        "lastName": "Fruchter",
-        "email": "wfruchterm@fc2.com",
-        "gender": "Male",
-        "lastInteract": "7/8/2023",
-        "currencyType": "Euro",
-        "balance": 552155
-    }, {
-        "id": 24,
-        "userName": "fgainesn",
-        "password": "xV8|OZWG#Cckj",
-        "firstName": "Franciska",
-        "lastName": "Gaines",
-        "email": "fgainesn@altervista.org",
-        "gender": "Female",
-        "lastInteract": "7/4/2023",
-        "currencyType": "Ruble",
-        "balance": 537729
-    }, {
-        "id": 25,
-        "userName": "everringo",
-        "password": "pY7+!u9Xa",
-        "firstName": "Emmaline",
-        "lastName": "Verring",
-        "email": "everringo@google.nl",
-        "gender": "Female",
-        "lastInteract": "11/9/2022",
-        "currencyType": "Hryvnia",
-        "balance": 14273
-    }, {
-        "id": 26,
-        "userName": "llothlorienp",
-        "password": "vW6?dF/qaa4PG",
-        "firstName": "Lucius",
-        "lastName": "Lothlorien",
-        "email": "llothlorienp@weather.com",
-        "gender": "Male",
-        "lastInteract": "5/19/2023",
-        "currencyType": "Euro",
-        "balance": 7388
-    }, {
-        "id": 27,
-        "userName": "rborneq",
-        "password": "cZ6}?CGHb5}Dy",
-        "firstName": "Rafaellle",
-        "lastName": "Borne",
-        "email": "rborneq@newyorker.com",
-        "gender": "Male",
-        "lastInteract": "7/6/2023",
-        "currencyType": "Yuan Renminbi",
-        "balance": 461045
-    }, {
-        "id": 28,
-        "userName": "imurielr",
-        "password": "tR0},Mz5D9vTE>E",
-        "firstName": "Ilaire",
-        "lastName": "Muriel",
-        "email": "imurielr@cbslocal.com",
-        "gender": "Male",
-        "lastInteract": "4/21/2023",
-        "currencyType": "Yuan Renminbi",
-        "balance": 944489
-    }, {
-        "id": 29,
-        "userName": "aosgars",
-        "password": "vM5!52WcvY=X",
-        "firstName": "Alphonso",
-        "lastName": "Osgar",
-        "email": "aosgars@discuz.net",
-        "gender": "Male",
-        "lastInteract": "12/11/2022",
-        "currencyType": "Dram",
-        "balance": 725427
-    }, {
-        "id": 30,
-        "userName": "alagranget",
-        "password": "fX6.q4|kHcgCtU9",
-        "firstName": "Aubree",
-        "lastName": "La Grange",
-        "email": "alagranget@cloudflare.com",
-        "gender": "Female",
-        "lastInteract": "11/21/2022",
-        "currencyType": "Yuan Renminbi",
-        "balance": 697925
-    }, {
-        "id": 31,
-        "userName": "vsivesu",
-        "password": "aF2!mt9>fH/Z",
-        "firstName": "Vanna",
-        "lastName": "Sives",
-        "email": "vsivesu@cocolog-nifty.com",
-        "gender": "Female",
-        "lastInteract": "8/11/2023",
-        "currencyType": "Euro",
-        "balance": 942217
-    }, {
-        "id": 32,
-        "userName": "wbazirev",
-        "password": "oQ6\"5j!M>",
-        "firstName": "Wallie",
-        "lastName": "Bazire",
-        "email": "wbazirev@plala.or.jp",
-        "gender": "Female",
-        "lastInteract": "3/28/2023",
-        "currencyType": "Peso",
-        "balance": 789680
-    }, {
-        "id": 33,
-        "userName": "rmunghamw",
-        "password": "hH9+>BF2H",
-        "firstName": "Romy",
-        "lastName": "Mungham",
-        "email": "rmunghamw@printfriendly.com",
-        "gender": "Female",
-        "lastInteract": "9/6/2023",
-        "currencyType": "Zloty",
-        "balance": 370812
-    }, {
-        "id": 34,
-        "userName": "lmackrellx",
-        "password": "tT8?e<IL2yD04H",
-        "firstName": "Larry",
-        "lastName": "Mackrell",
-        "email": "lmackrellx@upenn.edu",
-        "gender": "Male",
-        "lastInteract": "9/16/2023",
-        "currencyType": "Rupiah",
-        "balance": 798984
-    }, {
-        "id": 35,
-        "userName": "vgarlickey",
-        "password": "aE8}K}~q4",
-        "firstName": "Vasili",
-        "lastName": "Garlicke",
-        "email": "vgarlickey@globo.com",
-        "gender": "Male",
-        "lastInteract": "9/9/2023",
-        "currencyType": "Yuan Renminbi",
-        "balance": 276922
-    }, {
-        "id": 36,
-        "userName": "mpaslowz",
-        "password": "wM2\\>B2N",
-        "firstName": "Maude",
-        "lastName": "Paslow",
-        "email": "mpaslowz@topsy.com",
-        "gender": "Female",
-        "lastInteract": "2/19/2023",
-        "currencyType": "Dollar",
-        "balance": 422709
-    }, {
-        "id": 37,
-        "userName": "amacdearmont10",
-        "password": "rY7%gH7{f>\"",
-        "firstName": "Arabela",
-        "lastName": "MacDearmont",
-        "email": "amacdearmont10@archive.org",
-        "gender": "Female",
-        "lastInteract": "11/17/2022",
-        "currencyType": "Real",
-        "balance": 272359
-    }, {
-        "id": 38,
-        "userName": "arichie11",
-        "password": "nW7~!hNta=$",
-        "firstName": "Amberly",
-        "lastName": "Richie",
-        "email": "arichie11@oracle.com",
-        "gender": "Female",
-        "lastInteract": "8/16/2023",
-        "currencyType": "Quetzal",
-        "balance": 817432
-    }, {
-        "id": 39,
-        "userName": "rkeeri12",
-        "password": "gB9\\cdDcw5G",
-        "firstName": "Rodrique",
-        "lastName": "Keeri",
-        "email": "rkeeri12@ibm.com",
-        "gender": "Genderqueer",
-        "lastInteract": "11/6/2022",
-        "currencyType": "Real",
-        "balance": 911210
-    }, {
-        "id": 40,
-        "userName": "asobtka13",
-        "password": "tA5.P(@luZ9Iwth",
-        "firstName": "Agata",
-        "lastName": "Sobtka",
-        "email": "asobtka13@aboutads.info",
-        "gender": "Female",
-        "lastInteract": "8/10/2023",
-        "currencyType": "Ringgit",
-        "balance": 484644
-    }, {
-        "id": 41,
-        "userName": "kpanther14",
-        "password": "nV4<3Ysz7",
-        "firstName": "Kathrine",
-        "lastName": "Panther",
-        "email": "kpanther14@google.it",
-        "gender": "Non-binary",
-        "lastInteract": "3/30/2023",
-        "currencyType": "Yen",
-        "balance": 680827
-    }, {
-        "id": 42,
-        "userName": "cidell15",
-        "password": "lV2+j,sdN+",
-        "firstName": "Cornelia",
-        "lastName": "Idell",
-        "email": "cidell15@istockphoto.com",
-        "gender": "Bigender",
-        "lastInteract": "4/30/2023",
-        "currencyType": "Euro",
-        "balance": 807716
-    }, {
-        "id": 43,
-        "userName": "apallatina16",
-        "password": "uL4'&<`o=`Q",
-        "firstName": "Abe",
-        "lastName": "Pallatina",
-        "email": "apallatina16@google.es",
-        "gender": "Male",
-        "lastInteract": "8/14/2023",
-        "currencyType": "Yuan Renminbi",
-        "balance": 979464
-    }, {
-        "id": 44,
-        "userName": "wthornthwaite17",
-        "password": "rW2}hLrvKScG",
-        "firstName": "Wadsworth",
-        "lastName": "Thornthwaite",
-        "email": "wthornthwaite17@infoseek.co.jp",
-        "gender": "Male",
-        "lastInteract": "6/26/2023",
-        "currencyType": "Dram",
-        "balance": 413189
-    }, {
-        "id": 45,
-        "userName": "bwakerley18",
-        "password": "xG0@@%O+m6Ay9T",
-        "firstName": "Berny",
-        "lastName": "Wakerley",
-        "email": "bwakerley18@walmart.com",
-        "gender": "Female",
-        "lastInteract": "1/4/2023",
-        "currencyType": "Gourde",
-        "balance": 532170
-    }, {
-        "id": 46,
-        "userName": "amarzello19",
-        "password": "gK8+)R*w(pa|i_Q+",
-        "firstName": "Angelico",
-        "lastName": "Marzello",
-        "email": "amarzello19@huffingtonpost.com",
-        "gender": "Male",
-        "lastInteract": "2/16/2023",
-        "currencyType": "Yuan Renminbi",
-        "balance": 474838
-    }, {
-        "id": 47,
-        "userName": "cclash1a",
-        "password": "yU0/GG#wV+>}QGRw",
-        "firstName": "Cazzie",
-        "lastName": "Clash",
-        "email": "cclash1a@techcrunch.com",
-        "gender": "Non-binary",
-        "lastInteract": "11/20/2022",
-        "currencyType": "Peso",
-        "balance": 64840
-    }, {
-        "id": 48,
-        "userName": "mbrumhead1b",
-        "password": "aB2@)(6ZXVlof6wd",
-        "firstName": "Marla",
-        "lastName": "Brumhead",
-        "email": "mbrumhead1b@mozilla.org",
-        "gender": "Female",
-        "lastInteract": "9/27/2023",
-        "currencyType": "Real",
-        "balance": 424071
-    }, {
-        "id": 49,
-        "userName": "rborth1c",
-        "password": "nP9'oLqoXodlb}",
-        "firstName": "Raynard",
-        "lastName": "Borth",
-        "email": "rborth1c@webs.com",
-        "gender": "Male",
-        "lastInteract": "8/1/2023",
-        "currencyType": "Dollar",
-        "balance": 861510
-    }, {
-        "id": 50,
-        "userName": "llangrick1d",
-        "password": "lP3/'rns@/",
-        "firstName": "Lani",
-        "lastName": "Langrick",
-        "email": "llangrick1d@spotify.com",
-        "gender": "Female",
-        "lastInteract": "11/19/2022",
-        "currencyType": "Rupiah",
-        "balance": 222812
-    }, {
-        "id": 51,
-        "userName": "mdowne1e",
-        "password": "aO9.~}\\QW",
-        "firstName": "Martin",
-        "lastName": "Downe",
-        "email": "mdowne1e@usgs.gov",
-        "gender": "Male",
-        "lastInteract": "1/24/2023",
-        "currencyType": "Pound",
-        "balance": 362343
-    }, {
-        "id": 52,
-        "userName": "imatthewman1f",
-        "password": "nH5`7gvFJ",
-        "firstName": "Ida",
-        "lastName": "Matthewman",
-        "email": "imatthewman1f@pbs.org",
-        "gender": "Female",
-        "lastInteract": "1/25/2023",
-        "currencyType": "Birr",
-        "balance": 203581
-    }, {
-        "id": 53,
-        "userName": "hkarslake1g",
-        "password": "uI4%\"6cTQL`\\s<UT",
-        "firstName": "Harp",
-        "lastName": "Karslake",
-        "email": "hkarslake1g@scribd.com",
-        "gender": "Male",
-        "lastInteract": "6/4/2023",
-        "currencyType": "Peso",
-        "balance": 946923
-    }, {
-        "id": 54,
-        "userName": "wbehrendsen1h",
-        "password": "rW3)F@hed%~iMj",
-        "firstName": "Wynn",
-        "lastName": "Behrendsen",
-        "email": "wbehrendsen1h@alexa.com",
-        "gender": "Female",
-        "lastInteract": "7/7/2023",
-        "currencyType": "Yuan Renminbi",
-        "balance": 4131
-    }, {
-        "id": 55,
-        "userName": "rgabe1i",
-        "password": "sJ0\\0,4<4",
-        "firstName": "Randolf",
-        "lastName": "Gabe",
-        "email": "rgabe1i@usnews.com",
-        "gender": "Male",
-        "lastInteract": "3/10/2023",
-        "currencyType": "Rupiah",
-        "balance": 960404
-    }, {
-        "id": 56,
-        "userName": "nlownie1j",
-        "password": "vM7/*'{rmVe#(",
-        "firstName": "Noland",
-        "lastName": "Lownie",
-        "email": "nlownie1j@wiley.com",
-        "gender": "Male",
-        "lastInteract": "12/5/2022",
-        "currencyType": "Hryvnia",
-        "balance": 801859
-    }, {
-        "id": 57,
-        "userName": "kdeblasi1k",
-        "password": "tQ7\\#OCT$Kn$l}Q",
-        "firstName": "Ketti",
-        "lastName": "De Blasi",
-        "email": "kdeblasi1k@newsvine.com",
-        "gender": "Female",
-        "lastInteract": "11/8/2022",
-        "currencyType": "Yuan Renminbi",
-        "balance": 777874
-    }, {
-        "id": 58,
-        "userName": "dklemmt1l",
-        "password": "cC5`hW6F0s",
-        "firstName": "Dalenna",
-        "lastName": "Klemmt",
-        "email": "dklemmt1l@mapquest.com",
-        "gender": "Female",
-        "lastInteract": "4/25/2023",
-        "currencyType": "Dollar",
-        "balance": 252383
-    }, {
-        "id": 59,
-        "userName": "adumper1m",
-        "password": "mN8{NZ6i!e\"",
-        "firstName": "Annalee",
-        "lastName": "Dumper",
-        "email": "adumper1m@wix.com",
-        "gender": "Female",
-        "lastInteract": "3/19/2023",
-        "currencyType": "Franc",
-        "balance": 177179
-    }, {
-        "id": 60,
-        "userName": "ebuckley1n",
-        "password": "pM8~2P>>L9kwVeJ",
-        "firstName": "Eileen",
-        "lastName": "Buckley",
-        "email": "ebuckley1n@google.ru",
-        "gender": "Female",
-        "lastInteract": "11/18/2022",
-        "currencyType": "Peso",
-        "balance": 823014
-    }, {
-        "id": 61,
-        "userName": "esea1o",
-        "password": "nZ4?X=8fdNTa",
-        "firstName": "Ellis",
-        "lastName": "Sea",
-        "email": "esea1o@godaddy.com",
-        "gender": "Male",
-        "lastInteract": "6/29/2023",
-        "currencyType": "Zloty",
-        "balance": 491884
-    }, {
-        "id": 62,
-        "userName": "dbeckingham1p",
-        "password": "yE3.1hGkFf1I>lT)",
-        "firstName": "Dilly",
-        "lastName": "Beckingham",
-        "email": "dbeckingham1p@goo.ne.jp",
-        "gender": "Male",
-        "lastInteract": "5/30/2023",
-        "currencyType": "Euro",
-        "balance": 612122
-    }]
+        "lastInteract": "9/12/2023",
+        "currencyType": {
+            "code": "Euro",
+            "icon": "€"
+        },
+        "balance": 42000
+    },
+];
