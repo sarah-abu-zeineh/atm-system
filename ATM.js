@@ -16,4 +16,8 @@ export class ATM {
     convertCurrency() {}
 
     exit() {}
+
+    setAccount(account) {
+        this.currentAccount = account;
+    } 
 }
