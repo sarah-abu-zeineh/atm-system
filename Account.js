@@ -1,10 +1,10 @@
-import {generateUniqueId} from "./helpers/helper.js
+import {generateUniqueId, generateHashPassword} from "./helpers/helper.js";
 
 export class Account {
     constructor(account) {
         this.id = generateUniqueId();
         this.userName = account.userName;
-        this.password = account.password;
+        this.password = generateHashPassword(account.password);
         this.gender = account.gender;
         this.email = account.email;
         this.firstName = account.firstName;
@@ -21,23 +21,23 @@ export class Account {
             console.log(`Your new Balance is ${
                 this.balance
             }`);
-                    return;
+            return;
         }
         console.log(`Insufficient Balance`);
     }
 
     displayBalance() {
-        console.log(`${this.firstName}'s balance: ${this.currencyType.icon}${this.balance}`);
+        console.log(`${
+            this.firstName
+        }'s balance: ${
+            this.currencyType.icon
+        }${
+            this.balance
+        }`);
     }
 
     cashDeposit() {}
 
-    changePassword() {}
-
     transferFund() {}
-  
-    cashDeposit() { }
 
-    changePassword() { }
-  
 }
