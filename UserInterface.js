@@ -12,6 +12,7 @@ export class UserInterface {
         this.myBank = new Bank("Arab Bank");
     }
     login() {
+        console.log("Welecome to " + this.myBank.bankName);
         rl.question('Enter your username: ', (username) => {
             rl.question('Enter your password: ', (password) => {
                 const isValidCredentials = this.myBank.accounts.some(account => {
@@ -20,12 +21,17 @@ export class UserInterface {
                 if (isValidCredentials) {
                     console.log('Login successful.');
                     const currentAccount = this.myBank.getAccount(username, password);
+                    this.myBank.atms[0].setAccount(currentAccount);
+                    this.displayMenu();
                 } else {
+                    console.clear();
                     console.log('Login failed.');
+                    this.login()
                 }
-                rl.close();
             });
         });
     }
     display() { }
 }
+
+
