@@ -3,6 +3,7 @@ import {generateUniqueId} from "./helpers/helper.js";
 import {Account} from "./Account.js";
 import {ATM} from "./ATM.js"
 
+import {ATMs} from "./utils/ATMsArrya.js";
 import {AccountsArray} from "./utils/AccountsArray.js";
 
 export class Bank {
