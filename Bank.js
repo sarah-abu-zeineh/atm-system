@@ -1,7 +1,7 @@
-import {generateUniqueId} from "./helpers/helper.js";
+import { generateUniqueId } from "./helpers/helper.js";
 
-import {Account} from "./Account.js";
-import {ATM} from "./ATM.js"
+import { Account } from "./Account.js";
+import { ATM } from "./ATM.js";
 
 import {ATMs} from "./utils/ATMsArrya.js";
 import {AccountsArray} from "./utils/AccountsArray.js";
@@ -30,13 +30,23 @@ export class Bank {
 
     isAccountValid(userName) {
         const accountIndex = this.accounts.findIndex(user => user.userName === userName);
+
         return accountIndex > -1 ? accountIndex : console.log(`${userName} didn't found`);
-        
+
+    }
+    transferFund(userName, fund) {
+        if (this.isAccountValid(userName)) {
+            const account = this.accounts.find(user => user.userName === userName);
+            account.balance += fund;
+        }
+        else {
+            console.log("User with the provided username does not exist");
+        }
     }
 
     addATM(atm) {
         return new ATM(atm.balance, atm.location);
     }
 
-    deleteAccount() {}
+    deleteAccount() { }
 }
