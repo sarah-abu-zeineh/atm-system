@@ -1,4 +1,4 @@
-import {generateUniqueId} from "./helpers/helper.js";
+import { generateUniqueId } from "./helpers/helper.js";
 
 export class ATM {
     constructor(balance, location) {
@@ -7,19 +7,4 @@ export class ATM {
         this.location = location;
         this.currentAccount = null;
     }
-
-    displayMenu() {}
-
-    logIn() {}
-
-    logOut() {}
-
-    convertCurrency() {}
-
-    exit() { 
-        this.currentAccount = null;
-    }
-    setAccount(account) {
-        this.currentAccount = account;
-    } 
 }

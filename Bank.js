@@ -3,8 +3,8 @@ import { generateUniqueId } from "./helpers/helper.js";
 import { Account } from "./Account.js";
 import { ATM } from "./ATM.js";
 
-import {ATMs} from "./utils/ATMsArrya.js";
-import {AccountsArray} from "./utils/AccountsArray.js";
+import { ATMs } from "./utils/ATMsArrya.js";
+import { AccountsArray } from "./utils/AccountsArray.js";
 
 export class Bank {
     constructor(bankName) {
@@ -21,8 +21,8 @@ export class Bank {
     createAccount(account) {
         return new Account(account)
     }
-    
-    getAccountIndex(userName){
+
+    getAccountIndex(userName) {
         return this.accounts.findIndex(account => account.userName === userName);
     }
 
@@ -50,5 +50,4 @@ export class Bank {
         return new ATM(atm.balance, atm.location);
     }
 
-    deleteAccount() { }
 }
