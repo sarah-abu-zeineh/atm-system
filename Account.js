@@ -38,6 +38,32 @@ export class Account {
 
     cashDeposit() {}
 
-    transferFund() {}
+    changePassword(currentPassword, newPassword) {
+        const hashedNewPassword = generateHashPassword(newPassword);
+        const hashedCurrentPassword = generateHashPassword(currentPassword);
+
+        if (this.password === hashedNewPassword) {
+            console.log("Password you enter match the previous one.\nPlease enter another one!");
+
+            return true;
+        } else if (this.password === hashedCurrentPassword) {
+            this.checkNewPassword(newPassword, hashedNewPassword);
+            
+            return true;
+        }
+
+        return false;
+    }
+
+    checkNewPassword(password, hashedPassword) {
+        const pattern = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[-+_!@#$%^&*.,?]).+$");
+        if (pattern.test(password) && password.trim().length >= 6) {
+            this.password = hashedPassword;
+            console.log("Password updated successfully");
+        } else {
+            console.log("Enter a valid password");
+        }
+
+    }
 
 }
