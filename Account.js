@@ -1,4 +1,4 @@
-import {generateUniqueId} from "./helpers/helper.js
+import {generateUniqueId} from "./helpers/helper.js"
 
 export class Account {
     constructor(account) {

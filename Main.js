@@ -1,6 +1,5 @@
 import {Bank} from "./Bank.js";
 
-const myBank = new Bank("Hebron Islamic Bank");
 
 // import { UserInterface } from "./UserInterface.js";
 
