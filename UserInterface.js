@@ -61,7 +61,7 @@ export class UserInterface {
                     this.displayMenu();
                     break;
                 case '4': const { username, transferdAmount } = await this.askForTransferDetails();
-                    this.myBank.transferFund(username, transferdAmount);
+                    this.myBank.transferFund(username, transferdAmount, this.currentAccountIndex);
                     this.displayMenu();
                     break;
                 case '5':

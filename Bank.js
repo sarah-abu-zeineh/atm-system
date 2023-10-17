@@ -36,10 +36,11 @@ export class Bank {
         return accountIndex > -1 ? accountIndex : console.log(`${userName} didn't found`);
 
     }
-    transferFund(userName, fund) {
+    transferFund(userName, fund, currentAccountIndex) {
         if (this.isAccountValid(userName)) {
             const account = this.accounts.find(user => user.userName === userName);
-            account.balance += fund;
+            account.balance += + fund;
+            this.accounts[currentAccountIndex].balance -= + fund;
         }
         else {
             console.log("User with the provided username does not exist");
