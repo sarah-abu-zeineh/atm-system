@@ -1,6 +1,6 @@
 import { Bank } from "./Bank.js";
 
-import {generateHashPassword} from "./helpers/helper.js"
+import { generateHashPassword } from "./helpers/helper.js"
 
 import * as readline from "readline";
 
@@ -13,7 +13,8 @@ const rl = readline.createInterface({
 export class UserInterface {
     constructor() {
         this.myBank = new Bank("Arab Bank");
-        this.account = null;
+        this.currentAccount = null;
+        this.currentAccountIndex = -1;
     }
     login() {
         console.log("Welecome to " + this.myBank.bankName);
@@ -24,10 +25,8 @@ export class UserInterface {
                 });
                 if (isValidCredentials) {
                     console.log('Login successful.');
-                    this.account = this.myBank.getAccount(username, generateHashPassword(password));
-                    console.log(this.account);
-                    const currentAccount = this.myBank.getAccount(username, generateHashPassword(password));
-                    this.myBank.atms[0].setAccount(currentAccount);
+                    this.currentAccount = this.myBank.getAccount(username, generateHashPassword(password));
+                    this.currentAccountIndex = this.myBank.getAccountIndex(username);
                     this.displayMenu();
                 } else {
                     console.clear();
@@ -47,54 +46,62 @@ export class UserInterface {
         console.log('6. Exit');
         this.handleMenuSelection();
     }
+
     handleMenuSelection() {
-        rl.question('Enter your choice: ', (choice) => {
+        rl.question('Enter your choice: ', async (choice) => {
             switch (choice) {
-                case '1': this.myBank.atms[0].currentAccount.displayBalance();
+                case '1': this.myBank.accounts[this.currentAccountIndex].displayBalance();
+                    this.displayMenu();
                     break;
                 case '2': this.cashWithDrawMenue();
                     break;
                 case '3':
+                    const amount = await this.askUserForAmount('Enter the amount you want to deposite: ');
+                    this.myBank.accounts[this.currentAccountIndex].cashDeposit(amount);
+                    this.displayMenu();
                     break;
-                case '4':
+                case '4': const { username, transferdAmount } = await this.askForTransferDetails();
+                    this.myBank.transferFund(username, transferdAmount, this.currentAccountIndex);
+                    this.displayMenu();
                     break;
                 case '5':
                     this.changePasswordMenu();
                     break;
                 case '6':
                     console.log('Exiting the application...');
-                    rl.close();
+                    this.login();
                     break;
                 default:
                     console.log('Invalid choice. Please try again.');
+                    this.displayMenu();
             }
-            this.handleMenuSelection();
         });
     }
     cashWithDrawMenue() {
         console.log(' Select Amount ');
-        console.log(`1. ${this.myBank.atms[0].currentAccount.currencyType.icon}100`);
-        console.log(`2. ${this.myBank.atms[0].currentAccount.currencyType.icon}200`);
-        console.log(`3. ${this.myBank.atms[0].currentAccount.currencyType.icon}500`);
-        console.log(`4. ${this.myBank.atms[0].currentAccount.currencyType.icon}700`);
+        console.log(`1. ${this.myBank.accounts[this.currentAccountIndex].currencyType.icon}100`);
+        console.log(`2. ${this.myBank.accounts[this.currentAccountIndex].currencyType.icon}200`);
+        console.log(`3. ${this.myBank.accounts[this.currentAccountIndex].currencyType.icon}500`);
+        console.log(`4. ${this.myBank.accounts[this.currentAccountIndex].currencyType.icon}700`);
         console.log('5. other');
         console.log('6. back');
         this.handleWithdrawMenuSelection();
     }
+
     handleWithdrawMenuSelection() {
         rl.question('Enter your choice: ', async (choice) => {
             switch (choice) {
-                case '1': this.myBank.atms[0].currentAccount.cashWithDraw(100);
+                case '1': this.myBank.accounts[this.currentAccountIndex].cashWithDraw(100);
                     break;
-                case '2': this.myBank.atms[0].currentAccount.cashWithDraw(200);
+                case '2': this.myBank.accounts[this.currentAccountIndex].cashWithDraw(200);
                     break;
-                case '3': this.myBank.atms[0].currentAccount.cashWithDraw(500);
+                case '3': this.myBank.accounts[this.currentAccountIndex].cashWithDraw(500);
                     break;
-                case '4': this.myBank.atms[0].currentAccount.cashWithDraw(700);
+                case '4': this.myBank.accounts[this.currentAccountIndex].cashWithDraw(700);
                     break;
                 case '5':
-                    const amount = await this.askUserForAmount();
-                    this.myBank.atms[0].currentAccount.cashWithDraw(amount);
+                    const amount = await this.askUserForAmount('Enter the amount you want to withdraw: ');
+                    this.myBank.accounts[this.currentAccountIndex].cashWithDraw(amount);
                     break;
                 case '6':
                     break;
@@ -106,9 +113,20 @@ export class UserInterface {
 
     }
 
-    async askUserForAmount() {
+    askForTransferDetails() {
         return new Promise((resolve) => {
-            rl.question('Enter the amount you want to deposit: ', (amount) => {
+            rl.question('Enter the username of the recipient: ', (username) => {
+                rl.question('Enter the amount to transfer: ', (transferdAmount) => {
+                    resolve({ username, transferdAmount });
+                });
+            });
+        });
+    }
+
+
+    askUserForAmount(message) {
+        return new Promise((resolve) => {
+            rl.question(message, (amount) => {
                 resolve(Number(amount));
             });
         });
@@ -123,9 +141,8 @@ export class UserInterface {
 
         rl.question('current password : ', (currentPassword) => {
             rl.question('Enter your password: ', (newPassword) => {
-                const currentAccountIndex = this.myBank.getAccountIndex(this.account.userName);
-                const updatePasswordStatus = this.myBank.accounts[currentAccountIndex].changePassword(currentPassword, newPassword);
-                
+                const updatePasswordStatus = this.myBank.accounts[this.currentAccountIndex].changePassword(currentPassword, newPassword);
+
                 updatePasswordStatus ? this.displayMenu() : this.changePasswordMenu();
 
             });
