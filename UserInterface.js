@@ -65,6 +65,7 @@ export class UserInterface {
                     this.displayMenu();
                     break;
                 case '5':
+                    this.changePasswordMenu();
                     break;
                 case '6':
                     console.log('Exiting the application...');
@@ -130,6 +131,24 @@ export class UserInterface {
             });
         });
     }
+
+    changePasswordMenu() {
+        console.log("Your new password should meet the following criteria:");
+        console.log("- Be at least 8 characters long");
+        console.log("- Include at least one lowercase letter");
+        console.log("- Include at least one uppercase letter");
+        console.log("- Include at least one special character");
+
+        rl.question('current password : ', (currentPassword) => {
+            rl.question('Enter your password: ', (newPassword) => {
+                const updatePasswordStatus = this.myBank.accounts[this.currentAccountIndex].changePassword(currentPassword, newPassword);
+
+                updatePasswordStatus ? this.displayMenu() : this.changePasswordMenu();
+
+            });
+        });
+    }
+
 
 }
 
