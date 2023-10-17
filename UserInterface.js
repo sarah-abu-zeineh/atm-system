@@ -39,7 +39,34 @@ export class UserInterface {
         console.log('4. Transfer Fund');
         console.log('5. Change Password');
         console.log('6. Exit');
+        this.handleMenuSelection();
     }
+    handleMenuSelection() {
+        rl.question('Enter your choice: ', (choice) => {
+            switch (choice) {
+                case '1': this.myBank.atms[0].currentAccount.displayBalance();
+                    break;
+                case '2': 
+                    break;
+                case '3':
+                    break;
+                case '4':
+                    break;
+                case '5':
+                    break;
+                case '6':
+                    console.log('Exiting the application...');
+                    rl.close();
+                    break;
+                default:
+                    console.log('Invalid choice. Please try again.');
+            }
+            this.handleMenuSelection();
+        });
+    }
+
+
+
 
 }
 
