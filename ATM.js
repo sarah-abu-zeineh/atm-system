@@ -5,6 +5,7 @@ export class ATM {
         this.id = + generateUniqueId();
         this.balance = balance;
         this.location = location;
+        this.currentAccount = null;
     }
 
     displayMenu() {}

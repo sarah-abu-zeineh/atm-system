@@ -1,4 +1,4 @@
-import {generateUniqueId} from "./helpers/helper.js
+import {generateUniqueId} from "./helpers/helper.js"
 
 export class Account {
     constructor(account) {
@@ -30,10 +30,6 @@ export class Account {
         console.log(`${this.firstName}'s balance: ${this.currencyType.icon}${this.balance}`);
     }
 
-    cashDeposit() {}
-
-    changePassword() {}
-
     transferFund() {}
   
     cashDeposit(fund) {
@@ -46,7 +42,4 @@ export class Account {
     }
 
     changePassword() { }
-
-    transferFund() { }
-
 }
