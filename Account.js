@@ -1,4 +1,4 @@
-import { generateUniqueId } from "./helpers/helper.js";
+import {generateUniqueId} from "./helpers/helper.js
 
 export class Account {
     constructor(account) {
@@ -18,14 +18,24 @@ export class Account {
         if (amountToWithDraw < this.balance) {
             this.balance = this.balance - amountToWithDraw;
 
-            console.log(`Your new Balance is ${this.balance
-                }`);
-
-            return;
+            console.log(`Your new Balance is ${
+                this.balance
+            }`);
+                    return;
         }
         console.log(`Insufficient Balance`);
     }
 
+    displayBalance() {
+        console.log(`${this.firstName}'s balance: ${this.currencyType.icon}${this.balance}`);
+    }
+
+    cashDeposit() {}
+
+    changePassword() {}
+
+    transferFund() {}
+  
     cashDeposit(fund) {
         if (fund > 0) {
             this.balance += fund;
@@ -36,5 +46,7 @@ export class Account {
     }
 
     changePassword() { }
+
+    transferFund() { }
 
 }
