@@ -23,7 +23,7 @@ export class UserInterface {
                 });
                 if (isValidCredentials) {
                     console.log('Login successful.');
-                    const currentAccount = this.myBank.getAccount(username, password);
+                    const currentAccount = this.myBank.getAccount(username, generateHashPassword(password));
                     this.myBank.atms[0].setAccount(currentAccount);
                     this.displayMenu();
                 } else {
