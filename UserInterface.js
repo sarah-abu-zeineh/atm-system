@@ -31,7 +31,16 @@ export class UserInterface {
             });
         });
     }
-    display() { }
+    displayMenu() {
+        console.log(' Select Transaction  ');
+        console.log('1. Balance Inquiry');
+        console.log('2. Cash Withdrawl');
+        console.log('3. Deposite');
+        console.log('4. Transfer Fund');
+        console.log('5. Change Password');
+        console.log('6. Exit');
+    }
+
 }
 
 
