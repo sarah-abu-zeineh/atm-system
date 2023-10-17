@@ -1,6 +1,6 @@
 import { Bank } from "./Bank.js";
 
-import {generateHashPassword} from "./helpers/helper.js"
+import { generateHashPassword } from "./helpers/helper.js"
 
 import * as readline from "readline";
 
@@ -44,14 +44,17 @@ export class UserInterface {
         console.log('6. Exit');
         this.handleMenuSelection();
     }
+
     handleMenuSelection() {
-        rl.question('Enter your choice: ', (choice) => {
+        rl.question('Enter your choice: ', async (choice) => {
             switch (choice) {
                 case '1': this.myBank.atms[0].currentAccount.displayBalance();
                     break;
                 case '2': this.cashWithDrawMenue();
                     break;
                 case '3':
+                    const amount = await this.askUserForAmount('Enter the amount you want to deposite: ');
+                    this.myBank.atms[0].currentAccount.cashDeposit(amount);
                     break;
                 case '4':
                     break;
@@ -64,7 +67,7 @@ export class UserInterface {
                 default:
                     console.log('Invalid choice. Please try again.');
             }
-            this.handleMenuSelection();
+            this.displayMenu();
         });
     }
     cashWithDrawMenue() {
@@ -77,6 +80,7 @@ export class UserInterface {
         console.log('6. back');
         this.handleWithdrawMenuSelection();
     }
+
     handleWithdrawMenuSelection() {
         rl.question('Enter your choice: ', async (choice) => {
             switch (choice) {
@@ -89,7 +93,7 @@ export class UserInterface {
                 case '4': this.myBank.atms[0].currentAccount.cashWithDraw(700);
                     break;
                 case '5':
-                    const amount = await this.askUserForAmount();
+                    const amount = await this.askUserForAmount('Enter the amount you want to withdraw: ');
                     this.myBank.atms[0].currentAccount.cashWithDraw(amount);
                     break;
                 case '6':
@@ -102,15 +106,13 @@ export class UserInterface {
 
     }
 
-    async askUserForAmount() {
+    async askUserForAmount(message) {
         return new Promise((resolve) => {
-            rl.question('Enter the amount you want to deposit: ', (amount) => {
+            rl.question(message, (amount) => {
                 resolve(Number(amount));
             });
         });
     }
-
-
 
 }
 
