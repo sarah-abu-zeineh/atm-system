@@ -35,8 +35,16 @@ export class Account {
             this.balance
         }`);
     }
+  
+    cashDeposit(fund) {
+        if (fund > 0) {
+            this.balance += fund;
+        }
+        else {
+            console.log("Please enter a positve number!")
+        }
+    }
 
-    cashDeposit() {}
 
     changePassword(currentPassword, newPassword) {
         const hashedNewPassword = generateHashPassword(newPassword);
