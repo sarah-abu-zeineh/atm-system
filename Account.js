@@ -46,18 +46,19 @@ export class Account {
     }
 
 
+  
     changePassword(currentPassword, newPassword) {
         const hashedNewPassword = generateHashPassword(newPassword);
         const hashedCurrentPassword = generateHashPassword(currentPassword);
 
-        if (this.password === hashedNewPassword) {
+        if (this.password !== hashedCurrentPassword) {
             console.log("Password you enter match the previous one.\nPlease enter another one!");
 
-            return true;
+            return false;
         } else if (this.password === hashedCurrentPassword) {
-            this.checkNewPassword(newPassword, hashedNewPassword);
+            const updatePasswordStatus = this.checkNewPassword(newPassword, hashedNewPassword);
             
-            return true;
+            return updatePasswordStatus;
         }
 
         return false;
@@ -65,13 +66,17 @@ export class Account {
 
     checkNewPassword(password, hashedPassword) {
         const pattern = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[-+_!@#$%^&*.,?]).+$");
+        
         if (pattern.test(password) && password.trim().length >= 6) {
             this.password = hashedPassword;
             console.log("Password updated successfully");
+            
+            return true;
         } else {
             console.log("Enter a valid password");
-        }
 
+            return false
+        }
     }
 
 }
