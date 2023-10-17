@@ -56,7 +56,8 @@ export class UserInterface {
                     const amount = await this.askUserForAmount('Enter the amount you want to deposite: ');
                     this.myBank.atms[0].currentAccount.cashDeposit(amount);
                     break;
-                case '4':
+                case '4': const { username, transferdAmount } = await this.askForTransferDetails();
+                    this.myBank.transferFund(username, transferdAmount);
                     break;
                 case '5':
                     break;
@@ -106,7 +107,18 @@ export class UserInterface {
 
     }
 
-    async askUserForAmount(message) {
+    askForTransferDetails() {
+        return new Promise((resolve) => {
+            rl.question('Enter the username of the recipient: ', (username) => {
+                rl.question('Enter the amount to transfer: ', (transferdAmount) => {
+                    resolve({ username, transferdAmount });
+                });
+            });
+        });
+    }
+
+
+    askUserForAmount(message) {
         return new Promise((resolve) => {
             rl.question(message, (amount) => {
                 resolve(Number(amount));
