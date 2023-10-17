@@ -44,8 +44,6 @@ export class Account {
             console.log("Please enter a positve number!")
         }
     }
-
-
   
     changePassword(currentPassword, newPassword) {
         const hashedNewPassword = generateHashPassword(newPassword);

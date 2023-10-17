@@ -21,9 +21,11 @@ export class Bank {
     createAccount(account) {
         return new Account(account)
     }
+    
+    getAccountIndex(userName){
+        return this.accounts.findIndex(account => account.userName === userName);
+    }
 
-    getAccount() {}
-  
     getAccount(user_name, password) {
         return this.accounts.find(account => account.userName === user_name && account.password === password);
     }

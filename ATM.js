@@ -5,6 +5,7 @@ export class ATM {
         this.id = + generateUniqueId();
         this.balance = balance;
         this.location = location;
+        this.currentAccount = null;
     }
 
     displayMenu() {}
@@ -15,8 +16,9 @@ export class ATM {
 
     convertCurrency() {}
 
-    exit() {}
-
+    exit() { 
+        this.currentAccount = null;
+    }
     setAccount(account) {
         this.currentAccount = account;
     } 
