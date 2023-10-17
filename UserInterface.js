@@ -1,4 +1,7 @@
 import { Bank } from "./Bank.js";
+
+import {generateHashPassword} from "./helpers/helper.js"
+
 import * as readline from "readline";
 
 
@@ -15,7 +18,7 @@ export class UserInterface {
         rl.question('Enter your username: ', (username) => {
             rl.question('Enter your password: ', (password) => {
                 const isValidCredentials = this.myBank.accounts.some(account => {
-                    return account.userName === username && account.password === password;
+                    return account.userName === username && account.password === generateHashPassword(password);
                 });
                 if (isValidCredentials) {
                     console.log('Login successful.');
