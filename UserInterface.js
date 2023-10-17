@@ -13,6 +13,7 @@ const rl = readline.createInterface({
 export class UserInterface {
     constructor() {
         this.myBank = new Bank("Arab Bank");
+        this.account = null;
     }
     login() {
         console.log("Welecome to " + this.myBank.bankName);
@@ -23,6 +24,8 @@ export class UserInterface {
                 });
                 if (isValidCredentials) {
                     console.log('Login successful.');
+                    this.account = this.myBank.getAccount(username, generateHashPassword(password));
+                    console.log(this.account);
                     const currentAccount = this.myBank.getAccount(username, generateHashPassword(password));
                     this.myBank.atms[0].setAccount(currentAccount);
                     this.displayMenu();
@@ -56,6 +59,7 @@ export class UserInterface {
                 case '4':
                     break;
                 case '5':
+                    this.changePasswordMenu();
                     break;
                 case '6':
                     console.log('Exiting the application...');
@@ -110,6 +114,23 @@ export class UserInterface {
         });
     }
 
+    changePasswordMenu() {
+        console.log("Your new password should meet the following criteria:");
+        console.log("- Be at least 8 characters long");
+        console.log("- Include at least one lowercase letter");
+        console.log("- Include at least one uppercase letter");
+        console.log("- Include at least one special character");
+
+        rl.question('current password : ', (currentPassword) => {
+            rl.question('Enter your password: ', (newPassword) => {
+                const currentAccountIndex = this.myBank.getAccountIndex(this.account.userName);
+                const updatePasswordStatus = this.myBank.accounts[currentAccountIndex].changePassword(currentPassword, newPassword);
+                
+                updatePasswordStatus ? this.displayMenu() : this.changePasswordMenu();
+
+            });
+        });
+    }
 
 
 }
