@@ -8,3 +8,16 @@ export const generateUniqueId = (allData) => {
         return uniqueId;
     }
 }
+
+export const generateHashPassword = (password) =>{
+    const primeNumber = 31;
+    let counter = 0;
+    const hashedPassword = password.split('').reduce((accumulator, currentValue) => {
+        accumulator = (accumulator + currentValue.charCodeAt(0)) ^ (Math.pow(primeNumber, counter));
+        counter++;
+
+        return accumulator;
+    }, 0);
+
+    return hashedPassword;
+}
