@@ -36,9 +36,11 @@ export class Bank {
         return accountIndex > -1 ? accountIndex : console.log(`${userName} didn't found`);
 
     }
+  
     transferFund(userName, fund, currentAccountIndex) {
         if (this.isAccountValid(userName)) {
             const account = this.accounts.find(user => user.userName === userName);
+          
             account.balance += + fund;
             this.accounts[currentAccountIndex].balance -= + fund;
         }
@@ -51,4 +53,10 @@ export class Bank {
         return new ATM(atm.balance, atm.location);
     }
 
+    getAtm(atmIndex){
+        return this.atms[atmIndex - 1];
+    }
+    
+    deleteAccount() { }
+  
 }
