@@ -68,6 +68,7 @@ export class UserInterface {
         });
     }
     displayMenu() {
+        this.myBank.accounts[this.currentAccountIndex].checkUserBirthday();
         console.log(' Select Transaction  ');
         console.log('1. Balance Inquiry');
         console.log('2. Cash Withdrawl');
