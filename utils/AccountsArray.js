@@ -13,7 +13,7 @@ export const AccountsArray = [
             "icon": "$"
         },
         "balance": 369809,
-        "birthday": "01/15/1990"
+        "birthday": "10/19/1990"
     },
     {
         "id": 2,
