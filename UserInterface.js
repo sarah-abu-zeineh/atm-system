@@ -19,7 +19,7 @@ export class UserInterface {
     run() {
         console.log(`Welcome to ${this.myBank.bankName}`);
 
-        this.chooseAtm()
+        this.chooseAtm();
     }
 
     chooseAtm() {
@@ -33,7 +33,6 @@ export class UserInterface {
                 this.chooseAtm();
             } else {
                 this.atm = selectedATM;
-                console.log(this.atm);
                 this.login();
             }
         });
@@ -178,6 +177,28 @@ export class UserInterface {
                 updatePasswordStatus ? this.displayMenu() : this.changePasswordMenu();
 
             });
+        });
+    }
+
+    availableATMs() {
+        console.log("Sorry About that\nYou can choose on of these ATMs which your balance available based on yours.");
+        
+        const availableATMs = this.myBank.findATMsWithFunds("1000","ILS");// send the values here
+        availableATMs.forEach((atm, index) =>{
+            console.log(`${index + 1} ${atm.location}`);
+        })
+
+        rl.question('Enter your choice: ', (atmIndex) => {
+            const selectedATM = this.myBank.atms[atmIndex - 1];
+
+            if (selectedATM === undefined) {
+                console.log("Please select one of the available ATMs!!!");
+                this.availableATMs();
+            } else {
+                this.atm = selectedATM;
+                this.displayMenu();
+            }
+        
         });
     }
 
