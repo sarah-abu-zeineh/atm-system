@@ -2,7 +2,7 @@ import {generateUniqueId, generateHashPassword} from "./helpers/helper.js";
 
 export class Account {
     constructor(account) {
-        this.id = generateUniqueId();
+        this.id = + generateUniqueId();
         this.userName = account.userName;
         this.password = generateHashPassword(account.password);
         this.gender = account.gender;
