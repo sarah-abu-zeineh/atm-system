@@ -180,7 +180,7 @@ export class UserInterface {
         });
     }
 
-    availableATMs() {
+    findATMsWithFunds() {
         console.log("Sorry About that\nYou can choose on of these ATMs which your balance available based on yours.");
         
         const availableATMs = this.myBank.findATMsWithFunds("1000","ILS");// send the values here
