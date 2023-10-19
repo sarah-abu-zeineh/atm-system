@@ -4,7 +4,6 @@ import {generateHashPassword} from "./helpers/helper.js"
 
 import * as readline from "readline";
 
-
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
@@ -14,9 +13,42 @@ export class UserInterface {
     constructor() {
         this.myBank = new Bank("Arab Bank");
         this.account = null;
+        this.atm = null;
     }
+
+    run() {
+        console.log(`Welcome to ${this.myBank.bankName}`);
+
+        this.chooseAtm()
+    }
+
+    chooseAtm() {
+        this.displayATMsOptions();
+        
+        rl.question("Please choose an ATM by entering its number: ", (atmIndex) => {
+            const selectedATM = this.myBank.getAtm(atmIndex);
+    
+            if (selectedATM === undefined) {
+                console.log("Please select one of the available ATMs!!!");
+                this.chooseAtm();
+            } else {
+                this.atm = selectedATM;
+                console.log(this.atm);
+                this.login();
+            }
+        });
+    }
+    
+    displayATMsOptions() {
+        console.log('Available ATMs:');
+        
+        this.myBank.atms.forEach((atm, index) => {
+            console.log(`${index + 1}. ${atm.location}`);
+        });
+    }
+    
     login() {
-        console.log("Welecome to " + this.myBank.bankName);
+        console.log("Welcome to " + this.myBank.bankName);
         rl.question('Enter your username: ', (username) => {
             rl.question('Enter your password: ', (password) => {
                 const isValidCredentials = this.myBank.accounts.some(account => {

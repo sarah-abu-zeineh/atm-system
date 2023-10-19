@@ -4,7 +4,7 @@ import {Bank} from "./Bank.js";
 import { UserInterface } from "./UserInterface.js";
 
 const userInerface = new UserInterface();
-userInerface.login();
+userInerface.run();
 
 // const myBank = new Bank("Hebron Islamic Bank");
 
