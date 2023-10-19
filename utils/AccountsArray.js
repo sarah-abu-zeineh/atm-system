@@ -12,7 +12,8 @@ export const AccountsArray = [
             "code": "Dollar",
             "icon": "$"
         },
-        "balance": 369809
+        "balance": 369809,
+        "birthday": "01/15/1990"
     },
     {
         "id": 2,
@@ -27,7 +28,8 @@ export const AccountsArray = [
             "code": "Dollar",
             "icon": "$"
         },
-        "balance": 838401
+        "balance": 838401,
+        "birthday": "05/22/1985"
     },
     {
         "id": 3,
@@ -42,7 +44,8 @@ export const AccountsArray = [
             "code": "Dinar",
             "icon": "د.إ"
         },
-        "balance": 722794
+        "balance": 722794,
+        "birthday": "11/10/1992"
     },
     {
         "id": 4,
@@ -57,7 +60,8 @@ export const AccountsArray = [
             "code": "ILS",
             "icon": "₪"
         },
-        "balance": 934503
+        "balance": 934503,
+        "birthday": "07/28/1987"
     }, {
         "id": 5,
         "userName": "amccoggle4",
@@ -71,7 +75,8 @@ export const AccountsArray = [
             "code": "Dinar",
             "icon": "د.إ"
         },
-        "balance": 621235
+        "balance": 621235,
+        "birthday": "12/03/1995"
     }, {
         "id": 6,
         "userName": "jthumnel5",
@@ -85,7 +90,8 @@ export const AccountsArray = [
             "code": "ILS",
             "icon": "₪"
         },
-        "balance": 347865
+        "balance": 347865,
+        "birthday": "09/19/1988"
     }, {
         "id": 7,
         "userName": "cgronou8",
@@ -99,7 +105,8 @@ export const AccountsArray = [
             "code": "Dollar",
             "icon": "$"
         },
-        "balance": 198476
+        "balance": 198476,
+        "birthday": "03/14/1991"
     }, {
         "id": 8,
         "userName": "kmcclocklan7",
@@ -113,7 +120,8 @@ export const AccountsArray = [
             "code": "Dollar",
             "icon": "$"
         },
-        "balance": 123450
+        "balance": 123450,
+        "birthday": "08/20/1986"
     }, {
         "id": 9,
         "userName": "smatthews8",
@@ -127,7 +135,8 @@ export const AccountsArray = [
             "code": "Dinar",
             "icon": "د.إ"
         },
-        "balance": 987654
+        "balance": 987654,
+        "birthday": "12/08/1993"
     }, {
         "id": 10,
         "userName": "lgrant9",
@@ -141,7 +150,8 @@ export const AccountsArray = [
             "code": "Dollar",
             "icon": "$"
         },
-        "balance": 567890
+        "balance": 567890,
+        "birthday": "04/30/1989"
     }, {
         "id": 11,
         "userName": "jwilliams10",
@@ -155,7 +165,22 @@ export const AccountsArray = [
             "code": "Dinar",
             "icon": "د.إ"
         },
-        "balance": 32000
+        "balance": 32000,
+        "birthday": "06/12/1994"
+    }, {
+        "userName": "jwilliams10",
+        "password": "P@#o7y8xwCfT",
+        "firstName": "Jackie",
+        "lastName": "Williams",
+        "email": "jwilliams10@example.com",
+        "gender": "Male",
+        "lastInteract": "9/19/2023",
+        "currencyType": {
+            "code": "Dinar",
+            "icon": "د.إ"
+        },
+        "balance": 32000,
+        "birthday": "06/12/1994"
     }, {
         "id": 12,
         "userName": "lmartinez11",
@@ -169,7 +194,8 @@ export const AccountsArray = [
             "code": "ILS",
             "icon": "₪"
         },
-        "balance": 49000
+        "balance": 49000,
+        "birthday": "02/19/1997"
     }, {
         "id": 13,
         "userName": "cpatel12",
@@ -183,7 +209,8 @@ export const AccountsArray = [
             "code": "Dollar",
             "icon": "$"
         },
-        "balance": 64000
+        "balance": 64000,
+        "birthday": "09/03/1990"
     }, {
         "id": 14,
         "userName": "rsmith13",
@@ -197,7 +224,8 @@ export const AccountsArray = [
             "code": "Dinar",
             "icon": "د.إ"
         },
-        "balance": 27000
+        "balance": 27000,
+        "birthday": "01/25/1983"
     }, {
         "id": 15,
         "userName": "jmiller14",
@@ -211,7 +239,8 @@ export const AccountsArray = [
             "code": "Dollar",
             "icon": "$"
         },
-        "balance": 38000
+        "balance": 38000,
+        "birthday": "07/07/1992"
     }, {
         "id": 16,
         "userName": "akim15",
@@ -225,6 +254,7 @@ export const AccountsArray = [
             "code": "ILS",
             "icon": "₪"
         },
-        "balance": 42000
+        "balance": 42000,
+        "birthday": "04/15/1995"
     },
 ];
