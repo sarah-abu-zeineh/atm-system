@@ -50,5 +50,9 @@ export class Bank {
         return new ATM(atm.balance, atm.location);
     }
 
+    getAtm(atmIndex){
+        return this.atms[atmIndex - 1];
+    }
+    
     deleteAccount() { }
 }
