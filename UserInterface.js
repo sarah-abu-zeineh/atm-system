@@ -15,6 +15,7 @@ export class UserInterface {
         this.myBank = new Bank("Arab Bank");
         this.currentAccount = null;
         this.currentAccountIndex = -1;
+        this.currentCurrencyType = null;
     }
     login() {
         console.log("Welecome to " + this.myBank.bankName);
@@ -53,14 +54,19 @@ export class UserInterface {
                 case '1': this.myBank.accounts[this.currentAccountIndex].displayBalance();
                     this.displayMenu();
                     break;
-                case '2': this.cashWithDrawMenue();
+                case '2':
+                    await this.askUserForCurrencyType();
+                    this.cashWithDrawMenue();
                     break;
                 case '3':
+                    await this.askUserForCurrencyType();
                     const amount = await this.askUserForAmount('Enter the amount you want to deposite: ');
                     this.myBank.accounts[this.currentAccountIndex].cashDeposit(amount);
                     this.displayMenu();
                     break;
-                case '4': const { username, transferdAmount } = await this.askForTransferDetails();
+                case '4':
+                    await this.askUserForCurrencyType();
+                    const { username, transferdAmount } = await this.askForTransferDetails();
                     this.myBank.transferFund(username, transferdAmount, this.currentAccountIndex);
                     this.displayMenu();
                     break;
@@ -77,6 +83,30 @@ export class UserInterface {
             }
         });
     }
+
+    askUserForCurrencyType() {
+        return new Promise((resolve) => {
+            rl.question("Please enter your preferred currency type\n1. Dollar $\n2. Dinar د.إ\n3. ILS ₪\n", (currency) => {
+                this.handleCurrencyTypeSelection(currency)
+                resolve(currency);
+            });
+        });
+    }
+
+    handleCurrencyTypeSelection(choice) {
+        switch (choice) {
+            case '1': this.currentCurrencyType = "Dollar";
+                break;
+            case '2': this.currentCurrencyType = "Dinar";
+                break;
+            case '3': this.currentCurrencyType = "ILS";
+                break;
+            default:
+                console.log('Invalid choice. Please try again.');
+        }
+    }
+
+
     cashWithDrawMenue() {
         console.log(' Select Amount ');
         console.log(`1. ${this.myBank.accounts[this.currentAccountIndex].currencyType.icon}100`);
