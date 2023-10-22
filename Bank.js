@@ -1,10 +1,10 @@
-import {generateUniqueId} from "./helpers/helper.js";
+import { generateUniqueId } from "./helpers/helper.js";
 
-import {Account} from "./Account.js";
-import {ATM} from "./ATM.js";
+import { Account } from "./Account.js";
+import { ATM } from "./ATM.js";
 
-import {ATMs} from "./utils/ATMsArrya.js";
-import {AccountsArray} from "./utils/AccountsArray.js";
+import { ATMs } from "./utils/ATMsArrya.js";
+import { AccountsArray } from "./utils/AccountsArray.js";
 
 export class Bank {
     constructor(bankName) {
@@ -55,6 +55,10 @@ export class Bank {
     getAtm(atmIndex) {
         return this.atms[atmIndex - 1];
     }
+    
+    getAtmIndex(atm) {
+        return this.atms.findIndex(element => element.id == atm.id);
+    }
 
     findATMsWithFunds(amount, toCurrency) {
         return this.atms.filter(atm => this.currencyExchange(atm.balance, amount, atm.currencyType.code, toCurrency));
@@ -69,23 +73,23 @@ export class Bank {
             DollarToILS: 4.03,
             DollarToDinar: 0.71
         };
-    
+
         if (fromCurrency === toCurrency && atmBalance >= amount) {
             return true;
         }
-    
+
         const conversionKey = `${fromCurrency}To${toCurrency}`;
         if (conversionRates.hasOwnProperty(conversionKey)) {
             const exchangeRate = conversionRates[conversionKey];
             const newAtmBalance = exchangeRate * atmBalance;
-            
+
             if (newAtmBalance >= amount) {
                 return true;
             }
         }
-    
+
         return false;
     }
-    
+
 
 }
