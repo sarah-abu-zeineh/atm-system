@@ -61,7 +61,7 @@ export class UserInterface {
                 case '3':
                     await this.askUserForCurrencyType();
                     const amount = await this.askUserForAmount('Enter the amount you want to deposite: ');
-                    this.myBank.accounts[this.currentAccountIndex].cashDeposit(amount);
+                    this.myBank.accounts[this.currentAccountIndex].cashDeposit(amount, this.myBank.atms.balance);
                     this.displayMenu();
                     break;
                 case '4':
@@ -109,10 +109,10 @@ export class UserInterface {
 
     cashWithDrawMenue() {
         console.log(' Select Amount ');
-        console.log(`1. ${this.myBank.accounts[this.currentAccountIndex].currencyType.icon}100`);
-        console.log(`2. ${this.myBank.accounts[this.currentAccountIndex].currencyType.icon}200`);
-        console.log(`3. ${this.myBank.accounts[this.currentAccountIndex].currencyType.icon}500`);
-        console.log(`4. ${this.myBank.accounts[this.currentAccountIndex].currencyType.icon}700`);
+        console.log(`1. 100`);
+        console.log(`2. 200`);
+        console.log(`3. 500`);
+        console.log(`4. 700`);
         console.log('5. other');
         console.log('6. back');
         this.handleWithdrawMenuSelection();
@@ -121,23 +121,24 @@ export class UserInterface {
     handleWithdrawMenuSelection() {
         rl.question('Enter your choice: ', async (choice) => {
             switch (choice) {
-                case '1': this.myBank.accounts[this.currentAccountIndex].cashWithDraw(100);
+                case '1': this.myBank.accounts[this.currentAccountIndex].cashWithDraw(100, this.myBank.atms.balance);
                     break;
-                case '2': this.myBank.accounts[this.currentAccountIndex].cashWithDraw(200);
+                case '2': this.myBank.accounts[this.currentAccountIndex].cashWithDraw(200, this.myBank.atms.balance);
                     break;
-                case '3': this.myBank.accounts[this.currentAccountIndex].cashWithDraw(500);
+                case '3': this.myBank.accounts[this.currentAccountIndex].cashWithDraw(500, this.myBank.atms.balance);
                     break;
-                case '4': this.myBank.accounts[this.currentAccountIndex].cashWithDraw(700);
+                case '4': this.myBank.accounts[this.currentAccountIndex].cashWithDraw(700, this.myBank.atms.balance);
                     break;
                 case '5':
                     const amount = await this.askUserForAmount('Enter the amount you want to withdraw: ');
-                    this.myBank.accounts[this.currentAccountIndex].cashWithDraw(amount);
+                    this.myBank.accounts[this.currentAccountIndex].cashWithDraw(amount, this.myBank.atms.balance);
                     break;
                 case '6':
                     break;
                 default:
                     console.log('Invalid choice. Please try again.');
             }
+            this.convertCurrency(choice);
             this.displayMenu();
         });
 

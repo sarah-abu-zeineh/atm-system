@@ -14,10 +14,10 @@ export class Account {
         this.currencyType = account.currencyType;
     }
 
-    cashWithDraw(amountToWithDraw) {
-        if (amountToWithDraw < this.balance) {
+    cashWithDraw(amountToWithDraw, atmBalance) {
+        if (amountToWithDraw < this.balance ) {
             this.balance = this.balance - amountToWithDraw;
-
+            atmBalance -= atmBalance;
             console.log(`Your new Balance is ${
                 this.balance
             }`);
@@ -36,9 +36,10 @@ export class Account {
         }`);
     }
   
-    cashDeposit(fund) {
+    cashDeposit(fund, atmBalance) {
         if (fund > 0) {
             this.balance += fund;
+            atmBalance += fund;
         }
         else {
             console.log("Please enter a positve number!")
