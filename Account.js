@@ -12,6 +12,7 @@ export class Account {
         this.balance = account.balance;
         this.lastInteract = account.lastInteract;
         this.currencyType = account.currencyType;
+        this.dob = account.birthday;
     }
 
     cashWithDraw(amountToWithDraw, atmBalance) {
@@ -39,13 +40,11 @@ export class Account {
     cashDeposit(fund, atmBalance) {
         if (fund > 0) {
             this.balance += fund;
-            atmBalance += fund;
-        }
-        else {
+        } else {
             console.log("Please enter a positve number!")
         }
     }
-  
+
     changePassword(currentPassword, newPassword) {
         const hashedNewPassword = generateHashPassword(newPassword);
         const hashedCurrentPassword = generateHashPassword(currentPassword);
@@ -56,7 +55,7 @@ export class Account {
             return false;
         } else if (this.password === hashedCurrentPassword) {
             const updatePasswordStatus = this.checkNewPassword(newPassword, hashedNewPassword);
-            
+
             return updatePasswordStatus;
         }
 
@@ -65,11 +64,11 @@ export class Account {
 
     checkNewPassword(password, hashedPassword) {
         const pattern = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[-+_!@#$%^&*.,?]).+$");
-        
+
         if (pattern.test(password) && password.trim().length >= 6) {
             this.password = hashedPassword;
             console.log("Password updated successfully");
-            
+
             return true;
         } else {
             console.log("Enter a valid password");
@@ -77,5 +76,15 @@ export class Account {
             return false
         }
     }
+
+    checkUserBirthday() {
+        const userBirthday = new Date(this.dob);
+        const todaysDate = new Date();
+
+        if (todaysDate.getDate() === userBirthday.getDate() && todaysDate.getMonth() === userBirthday.getMonth()){ 
+            console.log(`🎂 HAPPY BIRTHDAY ${this.firstName} 🎉`);
+        }
+    }
+
 
 }

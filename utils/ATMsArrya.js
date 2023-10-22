@@ -1,26 +1,46 @@
 export const ATMs = [
     {
         "id": 1,
-        "balance": 1982573,
-        "location": "Murygino"
+        "balance": 1234,
+        "location": "Ras Al-Jora",
+        "currencyType": {
+            "code": "ILS",
+            "icon": "₪"
+        },
     },
     {
         "id": 2,
-        "balance": 1329487,
-        "location": "Slyudyanka"
+        "balance": 234,
+        "location": "Dora",
+        "currencyType": {
+            "code": "ILS",
+            "icon": "₪"
+        },
     },
     {
         "id": 3,
-        "balance": 7309811,
-        "location": "Kalenderovci Donji"
+        "balance": 234,
+        "location": "Ein Sarah",
+        "currencyType": {
+            "code": "Dollar",
+            "icon": "$"
+        },
     },
     {
         "id": 4,
-        "balance": 6090967,
-        "location": "Valtelheiro"
+        "balance": 2345,
+        "location": "Alhawooz Al-Tani",
+        "currencyType": {
+            "code": "Dollar",
+            "icon": "$"
+        },
     }, {
         "id": 5,
-        "balance": 6740160,
-        "location": "Xincun"
+        "balance": 234,
+        "location": "Taffoh",
+        "currencyType": {
+            "code": "Dinar",
+            "icon": "د.إ"
+        },
     }
 ]
