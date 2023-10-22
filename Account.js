@@ -1,4 +1,4 @@
-import {generateUniqueId, generateHashPassword} from "./helpers/helper.js";
+import { generateUniqueId, generateHashPassword } from "./helpers/helper.js";
 
 export class Account {
     constructor(account) {
@@ -16,30 +16,29 @@ export class Account {
     }
 
     cashWithDraw(amountToWithDraw, atmBalance) {
-        if (amountToWithDraw < this.balance ) {
+        if (amountToWithDraw < this.balance && atmBalance >= amountToWithDraw) {
             this.balance = this.balance - amountToWithDraw;
-            atmBalance -= atmBalance;
-            console.log(`Your new Balance is ${
-                this.balance
-            }`);
-            return;
+            atmBalance -= amountToWithDraw;
+            console.log(`Your new Balance is ${this.balance
+                }`);
+            return atmBalance;
         }
         console.log(`Insufficient Balance`);
+        return ;
     }
 
     displayBalance() {
-        console.log(`${
-            this.firstName
-        }'s balance: ${
-            this.currencyType.icon
-        }${
-            this.balance
-        }`);
+        console.log(`${this.firstName
+            }'s balance: ${this.currencyType.icon
+            }${this.balance
+            }`);
     }
-  
+
     cashDeposit(fund, atmBalance) {
         if (fund > 0) {
             this.balance += fund;
+            atmBalance += fund;
+            return atmBalance;
         } else {
             console.log("Please enter a positve number!")
         }
@@ -81,7 +80,7 @@ export class Account {
         const userBirthday = new Date(this.dob);
         const todaysDate = new Date();
 
-        if (todaysDate.getDate() === userBirthday.getDate() && todaysDate.getMonth() === userBirthday.getMonth()){ 
+        if (todaysDate.getDate() === userBirthday.getDate() && todaysDate.getMonth() === userBirthday.getMonth()) {
             console.log(`🎂 HAPPY BIRTHDAY ${this.firstName} 🎉`);
         }
     }

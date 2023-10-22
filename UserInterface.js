@@ -14,6 +14,9 @@ export class UserInterface {
         this.myBank = new Bank("Arab Bank");
         this.account = null;
         this.atm = null;
+        this.currentAccount = -1;
+        this.currentAccountIndex = -1;
+
     }
 
     run() {
@@ -24,29 +27,30 @@ export class UserInterface {
 
     chooseAtm() {
         this.displayATMsOptions();
-        
+
         rl.question("Please choose an ATM by entering its number: ", (atmIndex) => {
             const selectedATM = this.myBank.getAtm(atmIndex);
-    
+
             if (selectedATM === undefined) {
                 console.log("Please select one of the available ATMs!!!");
                 this.chooseAtm();
             } else {
                 this.atm = selectedATM;
+                this.currentATMIndex = this.myBank.getAtmIndex(this.atm);
                 this.login();
             }
         });
     }
-    
+
     displayATMsOptions() {
         console.log('Available ATMs:');
-        
+
         this.myBank.atms.forEach((atm, index) => {
             console.log(`${index + 1}. ${atm.location}`);
         });
-        
+
     }
-    
+
     login() {
         console.log("Welcome to " + this.myBank.bankName);
         rl.question('Enter your username: ', (username) => {
@@ -83,6 +87,7 @@ export class UserInterface {
         rl.question('Enter your choice: ', async (choice) => {
             switch (choice) {
                 case '1': this.myBank.accounts[this.currentAccountIndex].displayBalance();
+                    console.log(this.myBank.atms[this.currentATMIndex].balance);
                     this.displayMenu();
                     break;
                 case '2':
@@ -92,7 +97,7 @@ export class UserInterface {
                 case '3':
                     await this.askUserForCurrencyType();
                     const amount = await this.askUserForAmount('Enter the amount you want to deposite: ');
-                    this.myBank.accounts[this.currentAccountIndex].cashDeposit(amount, this.myBank.atms.balance);
+                    this.myBank.atms[this.currentATMIndex].balance = this.myBank.accounts[this.currentAccountIndex].cashDeposit(amount, this.myBank.atms[this.currentATMIndex].balance);
                     this.displayMenu();
                     break;
                 case '4':
@@ -152,24 +157,27 @@ export class UserInterface {
     handleWithdrawMenuSelection() {
         rl.question('Enter your choice: ', async (choice) => {
             switch (choice) {
-                case '1': this.myBank.accounts[this.currentAccountIndex].cashWithDraw(100, this.myBank.atms.balance);
+                case '1':
+                    this.myBank.atms[this.currentATMIndex].balance = this.myBank.accounts[this.currentAccountIndex].cashWithDraw(100, this.myBank.atms[this.currentATMIndex].balance);
                     break;
-                case '2': this.myBank.accounts[this.currentAccountIndex].cashWithDraw(200, this.myBank.atms.balance);
+                case '2':
+                    this.myBank.atms[this.currentATMIndex].balance = this.myBank.accounts[this.currentAccountIndex].cashWithDraw(200, this.myBank.atms[this.currentATMIndex].balance);
                     break;
-                case '3': this.myBank.accounts[this.currentAccountIndex].cashWithDraw(500, this.myBank.atms.balance);
+                case '3':
+                    this.myBank.atms[this.currentATMIndex].balance = this.myBank.accounts[this.currentAccountIndex].cashWithDraw(500, this.myBank.atms[this.currentATMIndex].balance);
                     break;
-                case '4': this.myBank.accounts[this.currentAccountIndex].cashWithDraw(700, this.myBank.atms.balance);
+                case '4': this.myBank.atms[this.currentATMIndex].balance = this.myBank.accounts[this.currentAccountIndex].cashWithDraw(700, this.myBank.atms[this.currentATMIndex].balance);
                     break;
                 case '5':
                     const amount = await this.askUserForAmount('Enter the amount you want to withdraw: ');
-                    this.myBank.accounts[this.currentAccountIndex].cashWithDraw(amount, this.myBank.atms.balance);
+                    this.myBank.atms[this.currentATMIndex].balance = this.myBank.accounts[this.currentAccountIndex].cashWithDraw(amount, this.myBank.atms[this.currentATMIndex].balance);
                     break;
                 case '6':
                     break;
                 default:
                     console.log('Invalid choice. Please try again.');
             }
-            this.convertCurrency(choice);
+            // this.convertCurrency(choice);
             this.displayMenu();
         });
 
@@ -213,9 +221,9 @@ export class UserInterface {
 
     findATMsWithFunds() {
         console.log("Sorry About that\nYou can choose on of these ATMs which your balance available based on yours.");
-        
-        const availableATMs = this.myBank.findATMsWithFunds("1000","ILS");// send the values here
-        availableATMs.forEach((atm, index) =>{
+
+        const availableATMs = this.myBank.findATMsWithFunds("1000", "ILS");// send the values here
+        availableATMs.forEach((atm, index) => {
             console.log(`${index + 1} ${atm.location}`);
         })
 
@@ -229,7 +237,7 @@ export class UserInterface {
                 this.atm = selectedATM;
                 this.displayMenu();
             }
-        
+
         });
     }
 
