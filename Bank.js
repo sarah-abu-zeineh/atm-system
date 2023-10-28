@@ -22,6 +22,10 @@ export class Bank {
         return new Account(account)
     }
 
+    updateBalance(amount) {
+        this.balance -= amount;
+    }
+
     getAccountIndex(userName) {
         return this.accounts.findIndex(account => account.userName === userName);
     }
@@ -33,19 +37,8 @@ export class Bank {
     isAccountValid(userName) {
         const accountIndex = this.accounts.findIndex(user => user.userName === userName);
 
-        return accountIndex > -1 ? accountIndex : console.log(`${userName} didn't found`);
+        return accountIndex > -1 ? accountIndex : console.log(`User with ${userName} not found. Please try again.`);
 
-    }
-
-    transferFund(userName, fund, currentAccountIndex) {
-        if (this.isAccountValid(userName)) {
-            const account = this.accounts.find(user => user.userName === userName);
-
-            account.balance += + fund;
-            this.accounts[currentAccountIndex].balance -= + fund;
-        } else {
-            console.log("User with the provided username does not exist");
-        }
     }
 
     addATM(atm) {
@@ -61,35 +54,36 @@ export class Bank {
     }
 
     findATMsWithFunds(amount, toCurrency) {
-        return this.atms.filter(atm => this.currencyExchange(atm.balance, amount, atm.currencyType.code, toCurrency));
+        return this.atms.filter(atm => this.currencyExchange(atm, amount, toCurrency, atm.currencyType.code));
     }
 
-    currencyExchange(atmBalance, amount, fromCurrency, toCurrency) {
+    currencyExchange(atm, amount, fromCurrency, toCurrency) {
+
         const conversionRates = {
             DinarToDollar: 1.41,
             DinarToILS: 5.68,
-            ILSToDinar: 0.18,
-            ILSToDollar: 0.25,
+            ILSToDinar: 0.17605,
+            ILSToDollar: 0.2481,
             DollarToILS: 4.03,
-            DollarToDinar: 0.71
+            DollarToDinar: 0.71605,
         };
 
-        if (fromCurrency === toCurrency && atmBalance >= amount) {
-            return true;
+        if (fromCurrency === toCurrency && atm.balance >= amount) {
+            return atm;
         }
 
-        const conversionKey = `${fromCurrency}To${toCurrency}`;
+        const conversionKey = `${toCurrency}To${fromCurrency}`;
+
         if (conversionRates.hasOwnProperty(conversionKey)) {
             const exchangeRate = conversionRates[conversionKey];
-            const newAtmBalance = exchangeRate * atmBalance;
+            const newAtmBalance = exchangeRate * atm.balance;
 
             if (newAtmBalance >= amount) {
-                return true;
+                return atm;
             }
         }
 
         return false;
     }
-
 
 }

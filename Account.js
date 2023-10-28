@@ -15,32 +15,35 @@ export class Account {
         this.dob = account.birthday;
     }
 
-    cashWithDraw(amountToWithDraw, atmBalance) {
-        if (amountToWithDraw < this.balance && atmBalance >= amountToWithDraw) {
-            this.balance = this.balance - amountToWithDraw;
-            atmBalance -= amountToWithDraw;
-            console.log(`Your new Balance is ${this.balance
-                }`);
-            return atmBalance;
+    cashWithDraw(amountToWithDraw, atmBalance, ATMWithdrawalAmount) {
+        if (amountToWithDraw <= this.balance && atmBalance >= amountToWithDraw) {
+            this.balance -= amountToWithDraw;
+            atmBalance -= ATMWithdrawalAmount;
+            console.log(`Your new Balance is ${this.balance}${this.currencyType.icon}`);
+            
+            return [atmBalance, amountToWithDraw, true];
+        } else if(amountToWithDraw > this.balance) {
+            console.log(`Insufficient Balance, your balance is ${this.balance}${this.currencyType.icon}`);
+            
+            return [undefined];
         }
-        console.log(`Insufficient Balance`);
-        return ;
+        
+        return [atmBalance, amountToWithDraw, false];
     }
 
     displayBalance() {
-        console.log(`${this.firstName
-            }'s balance: ${this.currencyType.icon
-            }${this.balance
-            }`);
+        console.log(`${this.firstName}'s balance: ${this.balance}${this.currencyType.icon}`);
     }
 
-    cashDeposit(fund, atmBalance) {
+    cashDeposit(fund, depositAmountForAtm, atmBalance) {
         if (fund > 0) {
             this.balance += fund;
-            atmBalance += fund;
+            atmBalance += depositAmountForAtm;
+            this.displayBalance();
+
             return atmBalance;
         } else {
-            console.log("Please enter a positve number!")
+            console.log("Please enter a positive number!")
         }
     }
 
@@ -85,5 +88,16 @@ export class Account {
         }
     }
 
+    subtractAmountFromBalance(amount) {
+        if (amount <= this.balance) {
+            this.balance -= amount;
+            console.log(`New balance: ${this.balance}${this.currencyType.icon}`);
+            
+            return true;
+        } else {
+            console.log('Insufficient balance for the transaction!');
 
+            return false;
+        }
+    }
 }

@@ -7,14 +7,15 @@ export const AccountsArray = [
         "lastName": "Yurukhin",
         "email": "cyurukhin0@walmart.com",
         "gender": "Female",
-        "lastInteract": "3/20/2023",
+        "lastInteract": "23/10/2023",
         "currencyType": {
             "code": "Dollar",
             "icon": "$"
         },
-        "balance": 369809,
-        "birthday": "10/19/1990"
+        "balance": 1000,
+        "birthday": "10/23/1990"
     },
+
     {
         "id": 2,
         "userName": "dstudholme1",
@@ -28,7 +29,7 @@ export const AccountsArray = [
             "code": "Dollar",
             "icon": "$"
         },
-        "balance": 838401,
+        "balance": 200,
         "birthday": "05/22/1985"
     },
     {
@@ -44,7 +45,7 @@ export const AccountsArray = [
             "code": "Dinar",
             "icon": "د.إ"
         },
-        "balance": 722794,
+        "balance": 200,
         "birthday": "11/10/1992"
     },
     {
@@ -60,7 +61,7 @@ export const AccountsArray = [
             "code": "ILS",
             "icon": "₪"
         },
-        "balance": 934503,
+        "balance": 300,
         "birthday": "07/28/1987"
     }, {
         "id": 5,
