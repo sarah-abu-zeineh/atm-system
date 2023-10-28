@@ -1,7 +1,7 @@
 export const ATMs = [
     {
         "id": 1,
-        "balance": 1234,
+        "balance": 900,
         "location": "Ras Al-Jora",
         "currencyType": {
             "code": "ILS",
@@ -36,7 +36,7 @@ export const ATMs = [
         },
     }, {
         "id": 5,
-        "balance": 234,
+        "balance": 234324,
         "location": "Taffoh",
         "currencyType": {
             "code": "Dinar",
