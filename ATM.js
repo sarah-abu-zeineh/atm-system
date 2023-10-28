@@ -13,10 +13,10 @@ export class ATM {
         const conversionRates = {
             DinarToDollar: 1.41,
             DinarToILS: 5.68,
-            ILSToDinar: 0.18,
-            ILSToDollar: 0.25,
+            ILSToDinar: 0.17605,
+            ILSToDollar: 0.2481,
             DollarToILS: 4.03,
-            DollarToDinar: 0.71
+            DollarToDinar: 0.71605,
         };
 
         if (fromCurrency === toCurrency) {
@@ -24,6 +24,7 @@ export class ATM {
         }
 
         const conversionKey = `${fromCurrency}To${toCurrency}`;
+
         if (conversionRates.hasOwnProperty(conversionKey)) {
             return amount * conversionRates[conversionKey];
         }
