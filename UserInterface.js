@@ -95,15 +95,14 @@ export class UserInterface {
     handleMenuSelection() {
         rl.question('Enter your choice: ', async (choice) => {
             switch (choice) {
-                case '1':
-                    // this.myBank.accounts[this.currentAccountIndex].displayBalance();
-                    // this.displayMenu();
+                case MenuOptions.BALANCE_INQUIRY:
+                    this.handleBalanceInquiry();
                     break;
-                case '2':
+                case MenuOptions.CASH_WITHDRAWAL:
                     // await this.askUserForCurrencyType();
                     // this.cashWithDrawMenu();
                     break;
-                case '3':
+                case MenuOptions.CASH_DEPOSIT:
                     // await this.askUserForCurrencyType();
                     // const amount = await this.askUserForAmount('Enter the amount you want to deposit: ');
                     // const amountForAtm = this.atm.convertCurrency(amount, this.currentCurrencyType, this.atm.currencyType.code);
@@ -112,13 +111,13 @@ export class UserInterface {
                     // this.myBank.atms[this.currentATMIndex].balance = this.currentAccount.cashDeposit(this.convertedAmount, amountForAtm, this.atm.balance);
                     // this.displayMenu();
                     break;
-                case '4':
+                case MenuOptions.CASH_WITHDRAWAL:
                     // this.handleTransfer();
                     break;
-                case '5':
+                case MenuOptions.TRANSFER_FUND:
                     this.changePasswordMenu();
                     break;
-                case '6':
+                case MenuOptions.EXIT:
                     console.log('Exiting the application...');
                     // this.login();
                     break;
@@ -129,6 +128,10 @@ export class UserInterface {
         });
     }
 
+    handleBalanceInquiry() {
+        this.myBank.accounts[this.currentAccountIndex].displayBalance();
+        this.displayMenu();
+    }
     // async handleTransfer() {
     //     await this.askUserForCurrencyType();
     //     const {userName, transferAmount: transferAmount} = await this.askForTransferDetails();
@@ -325,3 +328,13 @@ export class UserInterface {
     //     });
     // }
 }
+
+const MenuOptions = {
+    BALANCE_INQUIRY: '1',
+    CASH_WITHDRAWAL: '2',
+    CASH_DEPOSIT: '3',
+    TRANSFER_FUND: '4',
+    CHANGE_PASSWORD: '5',
+    EXIT: '6',
+};
+
