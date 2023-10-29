@@ -1,7 +1,7 @@
 import {Bank} from "./Bank.js";
 
-import {generateHashPassword} from "./helpers/helper.js"
-import { Authenticator } from "./Authenticator.js";
+import {Authenticator} from "./Authenticator.js";
+import {PasswordValidator} from "./PasswordValidator.js";
 
 import * as readline from "readline";
 
@@ -19,7 +19,9 @@ export class UserInterface {
     }
 
     run() {
-        console.log(`Welcome to ${this.myBank.bankName}`);
+        console.log(`Welcome to ${
+            this.myBank.bankName
+        }`);
 
         this.chooseAtm();
     }
@@ -45,7 +47,11 @@ export class UserInterface {
         console.log('Available ATMs:');
 
         this.myBank.atms.forEach((atm, index) => {
-            console.log(`${index + 1}. ${atm.location}`);
+            console.log(`${
+                index + 1
+            }. ${
+                atm.location
+            }`);
         });
 
     }
@@ -54,7 +60,7 @@ export class UserInterface {
         console.log("Welcome to " + this.myBank.bankName);
         rl.question('Enter your username: ', (userName) => {
             rl.question('Enter your password: ', (password) => {
-               this.authenticator.authenticateUser(userName, password, this.handleLoginResult.bind(this));
+                this.authenticator.authenticateUser(userName, password, this.handleLoginResult.bind(this));
             });
         });
     }
@@ -71,6 +77,7 @@ export class UserInterface {
             this.login();
         }
     }
+
     displayMenu() {
         this.myBank.accounts[this.currentAccountIndex].checkUserBirthday();
 
@@ -100,7 +107,7 @@ export class UserInterface {
                     // await this.askUserForCurrencyType();
                     // const amount = await this.askUserForAmount('Enter the amount you want to deposit: ');
                     // const amountForAtm = this.atm.convertCurrency(amount, this.currentCurrencyType, this.atm.currencyType.code);
-                    
+
                     // this.convertedAmount = this.atm.convertCurrency(amount, this.currentCurrencyType, this.currentAccount.currencyType.code,)
                     // this.myBank.atms[this.currentATMIndex].balance = this.currentAccount.cashDeposit(this.convertedAmount, amountForAtm, this.atm.balance);
                     // this.displayMenu();
@@ -109,7 +116,7 @@ export class UserInterface {
                     // this.handleTransfer();
                     break;
                 case '5':
-                    // this.changePasswordMenu();
+                    this.changePasswordMenu();
                     break;
                 case '6':
                     console.log('Exiting the application...');
@@ -141,7 +148,7 @@ export class UserInterface {
 
     //     if (isBalanceUpdate) {
     //         const transferredAccountIndex = transferredAccountInfo[0];
-            
+
     //         this.myBank.accounts[transferredAccountIndex].balance += +convertedTransferredAmount;
     //         console.log('Transaction was successful.');
     //     } else {
@@ -245,7 +252,7 @@ export class UserInterface {
     // withdrawFromATM(amount) {
     //     const atmBalanceConversion = this.atm.convertCurrency(this.atm.balance, this.atm.currencyType.code, this.currentCurrencyType);
     //     const newBalanceInfo = this.myBank.accounts[this.currentAccountIndex].cashWithDraw(this.convertedAmount, atmBalanceConversion, amount);
-        
+
     //     if (newBalanceInfo[2]) {
     //         const updatedAtmBalance = this.atm.convertCurrency(newBalanceInfo[0], this.currentCurrencyType, this.atm.currencyType.code);
 
@@ -276,22 +283,24 @@ export class UserInterface {
     //     });
     // }
 
-    // changePasswordMenu() {
-    //     console.log("Your new password should meet the following criteria:");
-    //     console.log("- Be at least 8 characters long");
-    //     console.log("- Include at least one lowercase letter");
-    //     console.log("- Include at least one uppercase letter");
-    //     console.log("- Include at least one special character");
+    changePasswordMenu() {
+        console.log("Your new password should meet the following criteria:");
+        PasswordValidator.displayPasswordCriteria();
 
-    //     rl.question('current password: ', (currentPassword) => {
-    //         rl.question('Enter your password: ', (newPassword) => {
-    //             const updatePasswordStatus = this.myBank.accounts[this.currentAccountIndex].changePassword(currentPassword, newPassword);
+        rl.question('current password: ', (currentPassword) => {
+            rl.question('Enter your password: ', (newPassword) => {
+                if (PasswordValidator.validatePassword(newPassword)) {
+                    this.authenticator.changePassword(currentPassword, newPassword, this.handleChangePasswordResult.bind(this));
+                } else {
+                    this.changePasswordMenu();
+                }
+            });
+        });
+    }
 
-    //             updatePasswordStatus ? this.displayMenu() : this.changePasswordMenu();
-
-    //         });
-    //     });
-    // }
+    handleChangePasswordResult(changePasswordStatus) {
+        changePasswordStatus ? this.displayMenu() : this.changePasswordMenu();
+    }
 
     // findATMsWithFunds(amount, currencyTypeCode) {
     //     console.log("Sorry About that\nYou can choose on of these ATMs which your balance available based on yours.");
