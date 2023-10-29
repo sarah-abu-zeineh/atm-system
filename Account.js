@@ -18,7 +18,7 @@ export class Account {
     cashWithDraw(amountToWithDraw, atmBalance, ATMWithdrawalAmount) {
         if (amountToWithDraw <= this.balance && atmBalance >= amountToWithDraw) {
             this.balance -= amountToWithDraw;
-            atmBalance -= ATMWithdrawalAmount;
+            atmBalance -= +ATMWithdrawalAmount
             console.log(`Your new Balance is ${this.balance}${this.currencyType.icon}`);
             
             return [atmBalance, amountToWithDraw, true];
