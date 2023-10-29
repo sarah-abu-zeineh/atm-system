@@ -54,4 +54,21 @@ export class TransactionManager {
         
         callback();           
     }
+
+    performTransferFund(transferAmount, currentCurrencyType, currentAccountIndex, currentAccount, transferredAccountInfo,callback) {
+        const convertedTransferredAmount = CurrencyConverter.convertCurrency(transferAmount, currentCurrencyType, transferredAccountInfo[1]);
+        const convertedAccountBalance = CurrencyConverter.convertCurrency(convertedTransferredAmount, currentAccount.currencyType.code, currentCurrencyType);
+        const isBalanceUpdate = this.myBank.accounts[currentAccountIndex].subtractAmountFromBalance(convertedAccountBalance);
+
+        if (isBalanceUpdate) {
+            const transferredAccountIndex = transferredAccountInfo[0];
+
+            this.myBank.accounts[transferredAccountIndex].balance += + convertedTransferredAmount;
+            console.log('Transaction was successful.');
+        } else {
+            console.log('Something went wrong. Please try again later.');
+        }
+
+        callback();
+    }
 }

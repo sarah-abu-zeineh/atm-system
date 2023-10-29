@@ -104,10 +104,10 @@ export class UserInterface {
                     const amount = await this.askUserForAmount('Enter the amount you want to deposit: ');
                     this.transactionManager.performDeposit(amount, this.atm, this.currentCurrencyType, this.currentAccount, this.currentATMIndex, this.displayMenu.bind(this))
                     break;
-                case MenuOptions.CASH_WITHDRAWAL:
-                    // this.handleTransfer();
-                    break;
                 case MenuOptions.TRANSFER_FUND:
+                    this.handleTransfer();
+                    break;
+                case MenuOptions.CHANGE_PASSWORD:
                     this.changePasswordMenu();
                     break;
                 case MenuOptions.EXIT:
@@ -122,44 +122,35 @@ export class UserInterface {
     }
 
 
-    // async handleTransfer() {
-    //     await this.askUserForCurrencyType();
-    //     const {userName, transferAmount: transferAmount} = await this.askForTransferDetails();
+    async handleTransfer() {
+        await this.askUserForCurrencyType();
+        const {userName, transferAmount: transferAmount} = await this.askForTransferDetails();
 
-    //     let transferredAccountInfo = this.getInfoAboutTransferredAccount(userName);
+        let transferredAccountInfo = this.getInfoAboutTransferredAccount(userName);
 
-    //     while (transferredAccountInfo === false) {
-    //         await this.askUserForCurrencyType();
-    //         const {userName, transferAmount: transferAmount} = await this.askForTransferDetails();
+        while (transferredAccountInfo === false) {
+            await this.askUserForCurrencyType();
+            const {userName, transferAmount: transferAmount} = await this.askForTransferDetails();
 
-    //         transferredAccountInfo = this.getInfoAboutTransferredAccount(userName);
-    //     }
+            transferredAccountInfo = this.getInfoAboutTransferredAccount(userName);
+        }
 
-    //     const convertedTransferredAmount = this.atm.convertCurrency(transferAmount, this.currentCurrencyType, transferredAccountInfo[1]);
-    //     const convertedAccountBalance = this.atm.convertCurrency(convertedTransferredAmount, this.currentAccount.currencyType.code, this.currentCurrencyType);
-    //     const isBalanceUpdate = this.myBank.accounts[this.currentAccountIndex].subtractAmountFromBalance(convertedAccountBalance);
+        this.transactionManager.performTransferFund(transferAmount, this.currentCurrencyType, this.currentAccountIndex, this.currentAccount, transferredAccountInfo, this.displayMenu.bind(this));
+    }
 
-    //     if (isBalanceUpdate) {
-    //         const transferredAccountIndex = transferredAccountInfo[0];
+    getInfoAboutTransferredAccount(userName) {
+        const accountIndex = this.myBank.isAccountValid(userName);
 
-    //         this.myBank.accounts[transferredAccountIndex].balance += +convertedTransferredAmount;
-    //         console.log('Transaction was successful.');
-    //     } else {
-    //         console.log('Something went wrong. Please try again later.');
-    //     }
-
-    //     this.displayMenu();
-    // }
-
-    // getInfoAboutTransferredAccount(userName) {
-    //     const accountIndex = this.myBank.isAccountValid(userName);
-
-    //     if (accountIndex > -1) {
-    //         return [accountIndex, this.myBank.accounts[accountIndex].currencyType.code];
-    //     } else {
-    //         return false;
-    //     }
-    // }
+        if (accountIndex > -1 && accountIndex != this.currentAccountIndex) {
+            return [accountIndex, this.myBank.accounts[accountIndex].currencyType.code];
+        } else if(accountIndex === this.currentAccountIndex) {
+            console.log("You cannot transfer funds to your own account. Choose another one.");
+            
+            return false;
+        } else {            
+            return false;
+        }
+    }
 
     askUserForCurrencyType() {
         return new Promise((resolve) => {
@@ -212,13 +203,13 @@ export class UserInterface {
                 case WithdrawalOptions.OPTION_1: 
                     amount = 100;
                     break;
-                case WithdrawalOptions.OPTION_2:    
+                case WithdrawalOptions.OPTION_2: 
                     amount = 200;
                     break;
                 case WithdrawalOptions.OPTION_3: 
                     amount = 500;
                     break;
-                case WithdrawalOptions.OPTION_4:    
+                case WithdrawalOptions.OPTION_4: 
                     amount = 700;
                     break;
                 case WithdrawalOptions.CUSTOM: 
@@ -243,7 +234,7 @@ export class UserInterface {
 
             if (selectedATM === undefined) {
                 console.log("Please select one of the available ATMs!!!");
-                handleATMSelection(); 
+                this.handleATMSelection();
             } else {
                 this.atm = selectedATM;
                 this.currentATMIndex = this.myBank.getAtmIndex(selectedATM);
@@ -252,15 +243,15 @@ export class UserInterface {
         });
     };
 
-    // askForTransferDetails() {
-    //     return new Promise((resolve) => {
-    //         rl.question('Enter the username of the recipient: ', (userName) => {
-    //             rl.question('Enter the amount to transfer: ', (transferAmount) => {
-    //                 resolve({userName, transferAmount: transferAmount});
-    //             });
-    //         });
-    //     });
-    // }
+    askForTransferDetails() {
+        return new Promise((resolve) => {
+            rl.question('Enter the username of the recipient: ', (userName) => {
+                rl.question('Enter the amount to transfer: ', (transferAmount) => {
+                    resolve({userName, transferAmount: transferAmount});
+                });
+            });
+        });
+    }
 
     askUserForAmount(message) {
         return new Promise((resolve) => {

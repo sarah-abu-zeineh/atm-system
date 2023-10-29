@@ -77,8 +77,8 @@ export class Account {
     subtractAmountFromBalance(amount) {
         if (amount <= this.balance) {
             this.balance -= amount;
-            console.log(`New balance: ${this.balance}${this.currencyType.icon}`);
-            
+            this.displayBalance();
+                        
             return true;
         } else {
             console.log('Insufficient balance for the transaction!');

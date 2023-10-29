@@ -37,7 +37,7 @@ export class Bank {
     isAccountValid(userName) {
         const accountIndex = this.accounts.findIndex(user => user.userName === userName);
 
-        return accountIndex > -1 ? accountIndex : console.log(`User with ${userName} not found. Please try again.`);
+        return accountIndex > -1 ? accountIndex : console.log(`Recipient with ${userName} not found. Please try again.`);
 
     }
 
