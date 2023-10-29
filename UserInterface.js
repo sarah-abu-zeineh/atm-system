@@ -2,6 +2,7 @@ import {Bank} from "./Bank.js";
 
 import {Authenticator} from "./Authenticator.js";
 import {PasswordValidator} from "./PasswordValidator.js";
+import {TransactionManager} from "./TransactionManager.js";
 
 import * as readline from "readline";
 
@@ -11,6 +12,7 @@ export class UserInterface {
     constructor() {
         this.myBank = new Bank("Arab Bank");
         this.authenticator = new Authenticator(this.myBank);
+        this.transactionManager = new TransactionManager(this.myBank);
         this.atm = null;
         this.currentAccount = -1;
         this.currentAccountIndex = -1;
@@ -19,9 +21,7 @@ export class UserInterface {
     }
 
     run() {
-        console.log(`Welcome to ${
-            this.myBank.bankName
-        }`);
+        console.log(`Welcome to ${this.myBank.bankName}`);
 
         this.chooseAtm();
     }
@@ -96,7 +96,7 @@ export class UserInterface {
         rl.question('Enter your choice: ', async (choice) => {
             switch (choice) {
                 case MenuOptions.BALANCE_INQUIRY:
-                    this.handleBalanceInquiry();
+                    this.transactionManager.balanceInquiry(this.currentAccountIndex, this.displayMenu.bind(this));
                     break;
                 case MenuOptions.CASH_WITHDRAWAL:
                     // await this.askUserForCurrencyType();
@@ -128,10 +128,7 @@ export class UserInterface {
         });
     }
 
-    handleBalanceInquiry() {
-        this.myBank.accounts[this.currentAccountIndex].displayBalance();
-        this.displayMenu();
-    }
+
     // async handleTransfer() {
     //     await this.askUserForCurrencyType();
     //     const {userName, transferAmount: transferAmount} = await this.askForTransferDetails();
@@ -217,26 +214,21 @@ export class UserInterface {
 
     // handleWithdrawMenuSelection() {
     //     rl.question('Enter your choice: ', async (choice) => {
-    //         let  amount = 0;
+    //         let amount = 0;
     //         switch (choice) {
-    //             case '1':
-    //                 amount = 100;
+    //             case '1': amount = 100;
     //                 this.convertedAmount = this.atm.convertCurrency(100, this.currentCurrencyType, this.currentAccount.currencyType.code);
     //                 break;
-    //             case '2':
-    //                 amount = 200;
+    //             case '2': amount = 200;
     //                 this.convertedAmount = this.atm.convertCurrency(200, this.currentCurrencyType, this.currentAccount.currencyType.code);
     //                 break;
-    //             case '3':
-    //                 amount = 500;
+    //             case '3': amount = 500;
     //                 this.convertedAmount = this.atm.convertCurrency(500, this.currentCurrencyType, this.currentAccount.currencyType.code);
     //                 break;
-    //             case '4':
-    //                 amount = 700;
+    //             case '4': amount = 700;
     //                 this.convertedAmount = this.atm.convertCurrency(700, this.currentCurrencyType, this.currentAccount.currencyType.code);
     //                 break;
-    //             case '5':
-    //                 amount = await this.askUserForAmount('Enter the amount you want to withdraw: ');
+    //             case '5': amount = await this.askUserForAmount('Enter the amount you want to withdraw: ');
 
     //                 this.convertedAmount = this.atm.convertCurrency(amount, this.currentCurrencyType, this.currentAccount.currencyType.code);
     //                 break;
@@ -335,6 +327,14 @@ const MenuOptions = {
     CASH_DEPOSIT: '3',
     TRANSFER_FUND: '4',
     CHANGE_PASSWORD: '5',
-    EXIT: '6',
+    EXIT: '6'
 };
 
+const WithdrawalOptions = {
+    OPTION_1: '1',
+    OPTION_2: '2',
+    OPTION_3: '3',
+    OPTION_4: '4',
+    CUSTOM: '5',
+    BACK: '6'
+};
