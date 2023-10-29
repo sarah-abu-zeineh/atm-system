@@ -3,6 +3,7 @@ import {Bank} from "./Bank.js";
 import {Authenticator} from "./Authenticator.js";
 import {PasswordValidator} from "./PasswordValidator.js";
 import {TransactionManager} from "./TransactionManager.js";
+import {CurrencyConverter} from "./CurrencyConverter.js";
 
 import * as readline from "readline";
 
@@ -47,11 +48,7 @@ export class UserInterface {
         console.log('Available ATMs:');
 
         this.myBank.atms.forEach((atm, index) => {
-            console.log(`${
-                index + 1
-            }. ${
-                atm.location
-            }`);
+            console.log(`${index + 1}. ${atm.location}`);
         });
 
     }
@@ -99,8 +96,8 @@ export class UserInterface {
                     this.transactionManager.balanceInquiry(this.currentAccountIndex, this.displayMenu.bind(this));
                     break;
                 case MenuOptions.CASH_WITHDRAWAL:
-                    // await this.askUserForCurrencyType();
-                    // this.cashWithDrawMenu();
+                    await this.askUserForCurrencyType();
+                    this.cashWithDrawMenu();
                     break;
                 case MenuOptions.CASH_DEPOSIT:
                     // await this.askUserForCurrencyType();
@@ -168,98 +165,97 @@ export class UserInterface {
     //     }
     // }
 
-    // askUserForCurrencyType() {
-    //     return new Promise((resolve) => {
-    //         rl.question("Please enter your preferred currency type\n1. Dollar $\n2. Dinar د.إ\n3. ILS ₪\n", (currency) => {
-    //             this.handleCurrencyTypeSelection(currency).then(() => {
-    //                 resolve(currency);
-    //             });
-    //         });
-    //     });
-    // }
+    askUserForCurrencyType() {
+        return new Promise((resolve) => {
+            rl.question("Please enter your preferred currency type\n1. Dollar $\n2. Dinar د.إ\n3. ILS ₪\n", (currency) => {
+                this.handleCurrencyTypeSelection(currency).then(() => {
+                    resolve(currency);
+                });
+            });
+        });
+    }
 
-    // handleCurrencyTypeSelection(choice) {
-    //     return new Promise((resolve) => {
-    //         switch (choice) {
-    //             case '1':
-    //                 this.currentCurrencyType = "Dollar";
-    //                 resolve();
-    //                 break;
-    //             case '2':
-    //                 this.currentCurrencyType = "Dinar";
-    //                 resolve();
-    //                 break;
-    //             case '3':
-    //                 this.currentCurrencyType = "ILS";
-    //                 resolve();
-    //                 break;
-    //             default:
-    //                 console.log('Invalid choice. Please try again.');
-    //                 this.askUserForCurrencyType().then(resolve);
-    //         }
-    //     });
-    // }
+    handleCurrencyTypeSelection(choice) {
+        return new Promise((resolve) => {
+            switch (choice) {
+                case currencyOptions.DOLLAR:
+                    this.currentCurrencyType = "Dollar";
+                    resolve();
+                    break;
+                case currencyOptions.DINAR:
+                    this.currentCurrencyType = "Dinar";
+                    resolve();
+                    break;
+                case currencyOptions.ILS:
+                    this.currentCurrencyType = "ILS";
+                    resolve();
+                    break;
+                default:
+                    console.log('Invalid choice. Please try again.');
+                    this.askUserForCurrencyType().then(resolve);
+            }
+        });
+    }
 
-    // cashWithDrawMenu() {
-    //     console.log(' Select Amount ');
-    //     console.log(`1. 100`);
-    //     console.log(`2. 200`);
-    //     console.log(`3. 500`);
-    //     console.log(`4. 700`);
-    //     console.log('5. other');
-    //     console.log('6. back');
+    cashWithDrawMenu() {
+        console.log(' Select Amount ');
+        console.log(`1. 100`);
+        console.log(`2. 200`);
+        console.log(`3. 500`);
+        console.log(`4. 700`);
+        console.log('5. other');
+        console.log('6. back');
 
-    //     this.handleWithdrawMenuSelection();
-    // }
+        this.handleWithdrawMenuSelection();
+    }
 
-    // handleWithdrawMenuSelection() {
-    //     rl.question('Enter your choice: ', async (choice) => {
-    //         let amount = 0;
-    //         switch (choice) {
-    //             case '1': amount = 100;
-    //                 this.convertedAmount = this.atm.convertCurrency(100, this.currentCurrencyType, this.currentAccount.currencyType.code);
-    //                 break;
-    //             case '2': amount = 200;
-    //                 this.convertedAmount = this.atm.convertCurrency(200, this.currentCurrencyType, this.currentAccount.currencyType.code);
-    //                 break;
-    //             case '3': amount = 500;
-    //                 this.convertedAmount = this.atm.convertCurrency(500, this.currentCurrencyType, this.currentAccount.currencyType.code);
-    //                 break;
-    //             case '4': amount = 700;
-    //                 this.convertedAmount = this.atm.convertCurrency(700, this.currentCurrencyType, this.currentAccount.currencyType.code);
-    //                 break;
-    //             case '5': amount = await this.askUserForAmount('Enter the amount you want to withdraw: ');
+    handleWithdrawMenuSelection() {
+        rl.question('Enter your choice: ', async (choice) => {
+            let amount = 0;
+            switch (choice) {
+                case WithdrawalOptions.OPTION_1: 
+                    amount = 100;
+                    break;
+                case WithdrawalOptions.OPTION_2:    
+                    amount = 200;
+                    break;
+                case WithdrawalOptions.OPTION_3: 
+                    amount = 500;
+                    break;
+                case WithdrawalOptions.OPTION_4:    
+                    amount = 700;
+                    break;
+                case WithdrawalOptions.CUSTOM: 
+                    amount = await this.askUserForAmount('Enter the amount you want to withdraw: ');
+                    break;
+                case WithdrawalOptions.BACK:
+                    this.displayMenu();
+                    break;
+                default:
+                    console.log('Invalid choice. Please try again.');
+            }
 
-    //                 this.convertedAmount = this.atm.convertCurrency(amount, this.currentCurrencyType, this.currentAccount.currencyType.code);
-    //                 break;
-    //             case '6':
-    //                 this.displayMenu();
-    //                 break;
-    //             default:
-    //                 console.log('Invalid choice. Please try again.');
-    //         }
+            this.convertedAmount = CurrencyConverter.convertCurrency(amount, this.currentCurrencyType, this.currentAccount.currencyType.code);
+            this.transactionManager.withdrawFromATM(this.atm, this.currentCurrencyType, amount, this.convertedAmount, this);
+        });
+    }
 
-    //         this.withdrawFromATM(amount);
-    //     });
+    handleATMSelection(availableATMs) {
+        console.log("hi")
+        rl.question('Enter your choice: ', (atmIndex) => {
+            const selectedATM = availableATMs[atmIndex - 1];
 
-    // }
+            if (selectedATM === undefined) {
+                console.log("Please select one of the available ATMs!!!");
+                handleATMSelection(); 
+            } else {
+                this.atm = selectedATM;
+                this.currentATMIndex = this.myBank.getAtmIndex(selectedATM);
+                this.displayMenu();
+            }
+        });
+    };
 
-    // withdrawFromATM(amount) {
-    //     const atmBalanceConversion = this.atm.convertCurrency(this.atm.balance, this.atm.currencyType.code, this.currentCurrencyType);
-    //     const newBalanceInfo = this.myBank.accounts[this.currentAccountIndex].cashWithDraw(this.convertedAmount, atmBalanceConversion, amount);
-
-    //     if (newBalanceInfo[2]) {
-    //         const updatedAtmBalance = this.atm.convertCurrency(newBalanceInfo[0], this.currentCurrencyType, this.atm.currencyType.code);
-
-    //         this.currentATMIndex = this.myBank.getAtmIndex(this.atm);
-    //         this.myBank.atms[this.currentATMIndex].balance = updatedAtmBalance;
-    //         this.displayMenu();
-    //     } else if (newBalanceInfo[2] === false) {
-    //         this.findATMsWithFunds(newBalanceInfo[1], this.currentCurrencyType);
-    //     } else {
-    //         this.displayMenu();
-    //     }
-    // }
     // askForTransferDetails() {
     //     return new Promise((resolve) => {
     //         rl.question('Enter the username of the recipient: ', (userName) => {
@@ -270,13 +266,13 @@ export class UserInterface {
     //     });
     // }
 
-    // askUserForAmount(message) {
-    //     return new Promise((resolve) => {
-    //         rl.question(message, (amount) => {
-    //             resolve(Number(amount));
-    //         });
-    //     });
-    // }
+    askUserForAmount(message) {
+        return new Promise((resolve) => {
+            rl.question(message, (amount) => {
+                resolve(Number(amount));
+            });
+        });
+    }
 
     changePasswordMenu() {
         console.log("Your new password should meet the following criteria:");
@@ -297,28 +293,6 @@ export class UserInterface {
         changePasswordStatus ? this.displayMenu() : this.changePasswordMenu();
     }
 
-    // findATMsWithFunds(amount, currencyTypeCode) {
-    //     console.log("Sorry About that\nYou can choose on of these ATMs which your balance available based on yours.");
-
-    //     const availableATMs = this.myBank.findATMsWithFunds(amount, currencyTypeCode);
-
-    //     availableATMs.forEach((atm, index) => {
-    //         console.log(`${index + 1}. ${atm.location}`);
-    //     })
-
-    //     rl.question('Enter your choice: ', (atmIndex) => {
-    //         const selectedATM = availableATMs[atmIndex - 1];
-
-    //         if (selectedATM === undefined) {
-    //             console.log("Please select one of the available ATMs!!!");
-    //             this.availableATMs();
-    //         } else {
-    //             this.atm = selectedATM;
-    //             this.currentATMIndex = this.myBank.getAtmIndex(this.atm);
-    //             this.displayMenu();
-    //         }
-    //     });
-    // }
 }
 
 const MenuOptions = {
@@ -328,6 +302,12 @@ const MenuOptions = {
     TRANSFER_FUND: '4',
     CHANGE_PASSWORD: '5',
     EXIT: '6'
+};
+
+const currencyOptions = {
+    DOLLAR: '1',
+    DINAR: '2',
+    ILS: '3'
 };
 
 const WithdrawalOptions = {
