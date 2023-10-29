@@ -25,4 +25,9 @@ export class Authenticator {
         }
     }
 
+    changePassword(currentPassword, newPassword, callback) {
+        const updatePasswordStatus = this.myBank.accounts[this.currentAccountIndex].changePassword(currentPassword, newPassword);
+        
+        callback(updatePasswordStatus);
+    }
 }
