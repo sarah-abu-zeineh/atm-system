@@ -22,7 +22,10 @@ export class UserInterface {
     }
 
     run() {
-        console.log(`Welcome to ${this.myBank.bankName}`);
+        console.log('--------------------------');
+        console.log(`|Welcome to the ${this.myBank.bankName}|`);
+        console.log('--------------------------');
+
 
         this.chooseAtm();
     }
@@ -111,12 +114,11 @@ export class UserInterface {
                     this.changePasswordMenu();
                     break;
                 case MenuOptions.EXIT:
-                    console.log('Exiting the application...');
-                    // this.login();
+                    this.logOut();
                     break;
                 default:
                     console.log('Invalid choice. Please try again.');
-                    // this.displayMenu();
+                    this.displayMenu();
             }
         });
     }
@@ -280,6 +282,17 @@ export class UserInterface {
         changePasswordStatus ? this.displayMenu() : this.changePasswordMenu();
     }
 
+    logOut() {
+        this.currentAccountIndex = -1;
+        this.currentAccount = null;
+        this.currencyType = null;
+        this.convertedAmount = null;
+
+        console.clear();
+        console.log('Exiting the application...');
+
+        this.login();
+    }
 }
 
 const MenuOptions = {
