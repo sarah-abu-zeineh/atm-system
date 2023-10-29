@@ -19,7 +19,7 @@ export class Account {
         if (amountToWithDraw <= this.balance && atmBalance >= amountToWithDraw) {
             this.balance -= amountToWithDraw;
             atmBalance -= +ATMWithdrawalAmount
-            console.log(`Your new Balance is ${this.balance}${this.currencyType.icon}`);
+            this.displayBalance();
             
             return [atmBalance, amountToWithDraw, true];
         } else if(amountToWithDraw > this.balance) {
@@ -78,7 +78,7 @@ export class Account {
         if (amount <= this.balance) {
             this.balance -= amount;
             this.displayBalance();
-                        
+
             return true;
         } else {
             console.log('Insufficient balance for the transaction!');
