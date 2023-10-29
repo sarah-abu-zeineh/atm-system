@@ -45,4 +45,13 @@ export class TransactionManager {
     
         callback.handleATMSelection(availableATMs);
     }
+
+    performDeposit(amount, atm, currentCurrencyType, currentAccount, currentATMIndex, callback){
+        const amountForAtm = CurrencyConverter.convertCurrency(amount, currentCurrencyType, atm.currencyType.code);
+        const convertedAmount = CurrencyConverter.convertCurrency(amount, currentCurrencyType, currentAccount.currencyType.code,)
+        
+        this.myBank.atms[currentATMIndex].balance = currentAccount.cashDeposit(convertedAmount, amountForAtm, atm.balance);
+        
+        callback();           
+    }
 }

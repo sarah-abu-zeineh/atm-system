@@ -100,13 +100,9 @@ export class UserInterface {
                     this.cashWithDrawMenu();
                     break;
                 case MenuOptions.CASH_DEPOSIT:
-                    // await this.askUserForCurrencyType();
-                    // const amount = await this.askUserForAmount('Enter the amount you want to deposit: ');
-                    // const amountForAtm = this.atm.convertCurrency(amount, this.currentCurrencyType, this.atm.currencyType.code);
-
-                    // this.convertedAmount = this.atm.convertCurrency(amount, this.currentCurrencyType, this.currentAccount.currencyType.code,)
-                    // this.myBank.atms[this.currentATMIndex].balance = this.currentAccount.cashDeposit(this.convertedAmount, amountForAtm, this.atm.balance);
-                    // this.displayMenu();
+                    await this.askUserForCurrencyType();
+                    const amount = await this.askUserForAmount('Enter the amount you want to deposit: ');
+                    this.transactionManager.performDeposit(amount, this.atm, this.currentCurrencyType, this.currentAccount, this.currentATMIndex, this.displayMenu.bind(this))
                     break;
                 case MenuOptions.CASH_WITHDRAWAL:
                     // this.handleTransfer();
