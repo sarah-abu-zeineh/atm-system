@@ -32,7 +32,9 @@ export class Account {
     }
 
     displayBalance() {
-        console.log(`${this.firstName}'s balance: ${this.balance}${this.currencyType.icon}`);
+        console.log('---------------------');
+        console.log(`|Your balance: ${this.balance}${this.currencyType.icon}|`);
+        console.log('---------------------');
     }
 
     cashDeposit(fund, depositAmountForAtm, atmBalance) {
